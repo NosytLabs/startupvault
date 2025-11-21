@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { Features } from '@/components/features';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
+import { CloneModal } from '@/components/organisms/CloneModal';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -15,9 +16,12 @@ const Testimonials = dynamic(() => import('@/components/layout/testimonials').th
 export default function HomePage() {
   const router = useRouter()
   const [keyword, setKeyword] = useState('')
+  const [selectedIndustry, setSelectedIndustry] = useState('')
   const [mounted, setMounted] = useState(false)
-  const trending = useStartupData({ sort: 'recent', limit: 6 })
-  const highMrr = useStartupData({ sort: 'mrr-high', limit: 6 })
+  const [cloneStartup, setCloneStartup] = useState<any>(null)
+  
+  const trending = useStartupData({ sort: 'recent', limit: 8 })
+  const highMrr = useStartupData({ sort: 'mrr-high', limit: 8 })
 
   useEffect(() => {
     setMounted(true)
@@ -26,8 +30,11 @@ export default function HomePage() {
   const onSearch = () => {
     const params = new URLSearchParams()
     if (keyword) params.set('search', keyword)
+    if (selectedIndustry) params.set('industry', selectedIndustry)
     router.push(`/startups?${params.toString()}`)
   }
+
+  const industries = ['SaaS', 'Marketplace', 'AI', 'Digital Products', 'Analytics', 'Services', 'Education'];
   
   if (!mounted) return null
   
@@ -48,19 +55,48 @@ export default function HomePage() {
               <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
                 Discover companies by revenue, industry, stage, tech stack, and more.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
-                <input
-                  value={keyword}
-                  onChange={e => setKeyword(e.target.value)}
-                  placeholder="Search companies, products, or keywords"
-                  className="input flex-1 h-12 text-lg px-4"
-                />
-                <button
-                  onClick={onSearch}
-                  className="btn btn-primary h-12 px-8 text-lg font-semibold min-w-[160px] glow-effect"
-                >
-                  Search Database
-                </button>
+              <div className="space-y-4 max-w-2xl mx-auto">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    value={keyword}
+                    onChange={e => setKeyword(e.target.value)}
+                    onKeyPress={e => e.key === 'Enter' && onSearch()}
+                    placeholder="Search companies, founders, keywords..."
+                    className="input flex-1 h-12 px-4"
+                  />
+                  <button
+                    onClick={onSearch}
+                    className="btn btn-primary h-12 px-8 font-semibold min-w-[140px] glow-effect"
+                  >
+                    Search
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <button
+                    onClick={() => {
+                      setSelectedIndustry('')
+                      onSearch()
+                    }}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                      selectedIndustry === '' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                    }`}
+                  >
+                    All Industries
+                  </button>
+                  {industries.map((ind) => (
+                    <button
+                      key={ind}
+                      onClick={() => {
+                        setSelectedIndustry(ind)
+                      }}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+                        selectedIndustry === ind ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                      }`}
+                    >
+                      {ind}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -74,13 +110,14 @@ export default function HomePage() {
             {trending.error ? (
               <div className="rounded-lg border bg-destructive/10 border-destructive p-6 max-w-2xl mx-auto">
                 <h3 className="text-destructive font-semibold mb-2">Service unavailable</h3>
-                <p className="text-muted-foreground">We're unable to load startups right now. Please retry or adjust your filters. If the issue persists, check service configuration.</p>
+                <p className="text-muted-foreground">Unable to load startups. Please refresh and try again.</p>
               </div>
             ) : (
               <StartupList
                 startups={trending.startups}
                 loading={trending.loading}
-                onStartupClick={(id) => router.push(`/startups?id=${id}`)}
+                onStartupClick={(id) => router.push(`/startups/${id}`)}
+                onClone={setCloneStartup}
                 className=""
               />
             )}
@@ -95,13 +132,14 @@ export default function HomePage() {
             {highMrr.error ? (
               <div className="rounded-lg border bg-destructive/10 border-destructive p-6 max-w-2xl mx-auto">
                 <h3 className="text-destructive font-semibold mb-2">Service unavailable</h3>
-                <p className="text-muted-foreground">We're unable to load startups right now. Please retry or adjust your filters. If the issue persists, check service configuration.</p>
+                <p className="text-muted-foreground">Unable to load startups. Please refresh and try again.</p>
               </div>
             ) : (
               <StartupList
                 startups={highMrr.startups}
                 loading={highMrr.loading}
-                onStartupClick={(id) => router.push(`/startups?id=${id}`)}
+                onStartupClick={(id) => router.push(`/startups/${id}`)}
+                onClone={setCloneStartup}
                 className=""
               />
             )}
@@ -119,6 +157,7 @@ export default function HomePage() {
         </section>
         <div className="mx-auto"><Testimonials /></div>
         <Footer />
+        {cloneStartup && <CloneModal startup={cloneStartup} onClose={() => setCloneStartup(null)} />}
       </div>
   );
 }
