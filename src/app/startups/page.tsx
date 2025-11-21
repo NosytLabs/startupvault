@@ -36,8 +36,6 @@ export default function StartupsPage() {
           <StartupList
             startups={data.startups}
             loading={data.loading}
-            onClone={setCloneStartup}
-            onStartupClick={(id) => (window.location.href = `/startups/${id}`)}
           />
         </div>
       </div>

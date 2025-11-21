@@ -129,7 +129,6 @@ export default function HomePage() {
               <StartupList
                 startups={trending.startups}
                 loading={trending.loading}
-                onStartupClick={(id) => router.push(`/startups/${id}`)}
                 className=""
               />
             )}
@@ -150,7 +149,6 @@ export default function HomePage() {
               <StartupList
                 startups={highMrr.startups}
                 loading={highMrr.loading}
-                onStartupClick={(id) => router.push(`/startups/${id}`)}
                 className=""
               />
             )}
