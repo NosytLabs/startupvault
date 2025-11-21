@@ -24,12 +24,12 @@ export default function StartupsPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-background">
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <div className="mb-12">
-            <h1 className="text-4xl font-bold mb-4">Verified Startup Database</h1>
-            <p className="text-lg text-muted-foreground">
-              Explore {data.startups.length} verified startups with real revenue data and cloneability insights
+      <div className="min-h-screen bg-gradient-to-b from-secondary/10 to-background">
+        <div className="max-w-4xl mx-auto px-4 py-16">
+          <div className="mb-16 animate-fade-in">
+            <h1 className="text-5xl font-bold mb-6 text-foreground">Verified Startup Database</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Explore <span className="font-semibold text-primary">{data.startups.length}</span> verified startups with real revenue data from TrustMRR.com
             </p>
           </div>
 

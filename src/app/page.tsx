@@ -72,14 +72,16 @@ export default function HomePage() {
                     📊 Leaderboard
                   </Link>
                 </div>
-                <div className="flex flex-wrap gap-2 justify-center">
+                <div className="flex flex-wrap gap-3 justify-center">
                   <button
                     onClick={() => {
                       setSelectedIndustry('')
                       onSearch()
                     }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                      selectedIndustry === '' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                      selectedIndustry === '' 
+                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' 
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border/50'
                     }`}
                   >
                     All Industries
@@ -90,8 +92,10 @@ export default function HomePage() {
                       onClick={() => {
                         setSelectedIndustry(ind)
                       }}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition ${
-                        selectedIndustry === ind ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                        selectedIndustry === ind 
+                          ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' 
+                          : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border/50'
                       }`}
                     >
                       {ind}
@@ -102,11 +106,11 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section id="marketplace" className="py-20 bg-background">
+        <section id="marketplace" className="py-28 bg-background">
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Trending Startups</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Discover the most popular and fastest-growing startups in our database</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Trending Startups</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">Discover the most popular and fastest-growing startups in our database</p>
             </div>
             {trending.error ? (
               <div className="rounded-lg border bg-destructive/10 border-destructive p-6 max-w-2xl mx-auto">
@@ -122,11 +126,11 @@ export default function HomePage() {
             )}
           </div>
         </section>
-        <section className="py-20 bg-secondary/30">
+        <section className="py-28 bg-gradient-to-b from-secondary/20 to-background">
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">High MRR Companies</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Explore companies with proven revenue models and strong growth metrics</p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">High MRR Companies</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">Explore companies with proven revenue models and strong growth metrics</p>
             </div>
             {highMrr.error ? (
               <div className="rounded-lg border bg-destructive/10 border-destructive p-6 max-w-2xl mx-auto">

@@ -32,14 +32,16 @@ export default function LeaderboardPage() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="bg-gradient-to-br from-background to-secondary/20">
-        <div className="container max-w-6xl mx-auto px-4 py-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">TrustMRR Global Leaderboard</h1>
-        <p className="text-lg text-muted-foreground mb-8">
-          {leaderboard.length} verified startups ranked by performance • {champions.length} Champions
-        </p>
+      <main className="bg-gradient-to-br from-secondary/10 via-background to-secondary/5">
+        <div className="container max-w-6xl mx-auto px-4 py-16">
+          <div className="mb-16 animate-fade-in">
+            <h1 className="text-5xl md:text-6xl font-bold mb-3 text-foreground">TrustMRR Global Leaderboard</h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              <span className="font-semibold text-primary">{leaderboard.length}</span> verified startups ranked by performance • <span className="font-semibold text-primary">{champions.length}</span> Champions
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           <div className="bg-card rounded-lg border p-6">
             <div className="text-3xl font-bold text-primary">{leaderboard.length}</div>
             <div className="text-sm text-muted-foreground">Total Verified Startups</div>
