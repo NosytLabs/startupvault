@@ -42,37 +42,51 @@ export default function LeaderboardPage() {
           </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-card rounded-lg border p-6">
-            <div className="text-3xl font-bold text-primary">{leaderboard.length}</div>
-            <div className="text-sm text-muted-foreground">Total Verified Startups</div>
+          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10">
+              <div className="text-4xl font-bold text-primary mb-2">{leaderboard.length}</div>
+              <div className="text-sm text-muted-foreground font-medium">Total Verified Startups</div>
+            </div>
           </div>
-          <div className="bg-card rounded-lg border p-6">
-            <div className="text-3xl font-bold text-primary">{champions.length}</div>
-            <div className="text-sm text-muted-foreground">Champion Status Startups</div>
+          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10">
+              <div className="text-4xl font-bold text-primary mb-2">🏆 {champions.length}</div>
+              <div className="text-sm text-muted-foreground font-medium">Champion Status Startups</div>
+            </div>
           </div>
-          <div className="bg-card rounded-lg border p-6">
-            <div className="text-3xl font-bold text-primary">{countries.length}</div>
-            <div className="text-sm text-muted-foreground">Countries Represented</div>
+          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10">
+              <div className="text-4xl font-bold text-primary mb-2">🌍 {countries.length}</div>
+              <div className="text-sm text-muted-foreground font-medium">Countries Represented</div>
+            </div>
           </div>
         </div>
 
         {/* Champions Section */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">🏆 Champions (Top Performers)</h2>
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-6">🏆 Champions (Top Performers)</h2>
           <div className="space-y-3">
             {champions.slice(0, 10).map((startup, idx) => (
-              <div key={startup.id} className="bg-card rounded-lg border p-4 hover:border-primary/50 transition cursor-pointer" onClick={() => router.push(`/startups/${startup.id}`)}>
-                <div className="flex items-center justify-between">
+              <div 
+                key={startup.id} 
+                className="group relative bg-card rounded-lg border border-border p-5 hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden"
+                onClick={() => router.push(`/startups/${startup.id}`)}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="text-xl font-bold text-primary w-8">{idx + 1}</div>
+                    <div className="text-2xl font-bold text-primary w-10 text-center">{idx + 1}</div>
                     <div>
-                      <div className="font-semibold">{startup.name}</div>
+                      <div className="font-bold text-foreground">{startup.name}</div>
                       <div className="text-sm text-muted-foreground">{startup.founder} • {startup.country}</div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-bold">${(startup.mrr || startup.revenue).toLocaleString()}</div>
-                    <div className="text-xs text-muted-foreground">{startup.mrr ? 'MRR' : 'Revenue'}</div>
+                    <div className="font-bold text-primary text-lg">${(startup.mrr || startup.revenue).toLocaleString()}</div>
+                    <div className="text-xs text-muted-foreground font-medium">{startup.mrr ? 'MRR' : 'Revenue'}</div>
                   </div>
                 </div>
               </div>
@@ -81,12 +95,12 @@ export default function LeaderboardPage() {
         </div>
 
         {/* Filter by Country */}
-        <div className="mb-8">
-          <label className="block text-sm font-medium mb-3">Filter by Country:</label>
-          <div className="flex flex-wrap gap-2">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold mb-6">🌍 Filter by Country</h2>
+          <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedCountry('')}
-              className={`px-4 py-2 rounded-lg border transition ${!selectedCountry ? 'bg-primary text-white border-primary' : 'hover:border-primary/50'}`}
+              className={`px-4 py-2.5 rounded-lg border font-semibold transition-all duration-300 ${!selectedCountry ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/30 scale-105' : 'border-border hover:border-primary/50'}`}
             >
               All Countries
             </button>
@@ -94,7 +108,7 @@ export default function LeaderboardPage() {
               <button
                 key={country.country}
                 onClick={() => setSelectedCountry(country.country)}
-                className={`px-4 py-2 rounded-lg border transition ${selectedCountry === country.country ? 'bg-primary text-white border-primary' : 'hover:border-primary/50'}`}
+                className={`px-4 py-2.5 rounded-lg border font-semibold transition-all duration-300 ${selectedCountry === country.country ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/30 scale-105' : 'border-border hover:border-primary/50'}`}
               >
                 {country.country} ({country.count})
               </button>
@@ -104,7 +118,7 @@ export default function LeaderboardPage() {
 
         {/* Full Leaderboard */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">📊 Full Leaderboard {selectedCountry && `- ${selectedCountry}`}</h2>
+          <h2 className="text-3xl font-bold mb-6">📊 Full Leaderboard {selectedCountry && `- ${selectedCountry}`}</h2>
           <div className="space-y-2">
             {loading ? (
               <div className="text-center py-8 text-muted-foreground">Loading...</div>

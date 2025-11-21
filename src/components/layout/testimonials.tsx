@@ -35,16 +35,31 @@ export function Testimonials() {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-28 bg-gradient-to-b from-background via-secondary/10 to-background">
       <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What Builders Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">What Builders Say</h2>
+          <p className="text-lg text-muted-foreground">Discover how founders use StartupVault to build faster</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, i) => (
-            <div key={i} className="p-6 rounded-lg bg-card border hover:shadow-lg transition">
-              <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
-              <div>
-                <p className="font-semibold">{testimonial.author}</p>
-                <p className="text-sm text-primary">{testimonial.role}</p>
+            <div 
+              key={i} 
+              className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden"
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-foreground leading-relaxed mb-6 text-sm">"{testimonial.quote}"</p>
+                <div className="pt-4 border-t border-border">
+                  <p className="font-bold text-foreground">{testimonial.author}</p>
+                  <p className="text-sm text-primary font-medium">{testimonial.role}</p>
+                </div>
               </div>
             </div>
           ))}
