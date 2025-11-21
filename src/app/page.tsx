@@ -121,7 +121,7 @@ export default function HomePage() {
               <StartupList
                 startups={trending.startups}
                 loading={trending.loading}
-                className="grid md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6"
               />
             )}
           </div>
@@ -141,7 +141,7 @@ export default function HomePage() {
               <StartupList
                 startups={highMrr.startups}
                 loading={highMrr.loading}
-                className="grid md:grid-cols-2 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-6"
               />
             )}
           </div>
