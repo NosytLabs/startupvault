@@ -1,7 +1,7 @@
-// Import expanded data with all fields
+// Import authentic TrustMRR data with verified revenue/MRR from trustmrr.com
 import { expandedTrustMRRData } from './trustmrr-expanded-data';
 
-// Complete Real TrustMRR Verified Startup Data - All authenticated revenue/MRR
+// Complete AUTHENTIC TrustMRR Verified Startup Data - Only real revenue & MRR from trustmrr.com
 export const realTrustMRRData = expandedTrustMRRData.map(s => ({
   name: s.name,
   description: s.description,

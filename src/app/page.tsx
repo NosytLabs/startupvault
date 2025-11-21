@@ -45,14 +45,14 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-6">
                 <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
-                  📊 Real Data from 52 Verified TrustMRR Startups (Champions, Countries, Categories)
+                  ✓ AUTHENTIC Data from TrustMRR.com - 25 Verified Startups
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight tracking-tight glow-effect">
                 {branding.subbrand}: Clone Proven Startup Models
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto">
-                Discover $1.2B+ in verified startup revenues & MRR data. Full leaderboard. Champions. 14+ countries. 25+ categories.
+                Discover $1.1B+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to clone.
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
                 AI-powered cloneability scoring shows you which startup models are easiest to replicate. Get actionable insights backed by real data.
