@@ -1,9 +1,15 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav style={{
@@ -50,9 +56,9 @@ export default function Navbar() {
               fontSize: '0.875rem',
               fontWeight: 500,
               transition: 'all 0.2s',
-              color: pathname === '/' ? '#3b82f6' : '#4b5563',
-              background: pathname === '/' ? '#eff6ff' : 'transparent',
-              border: pathname === '/' ? '1px solid #bfdbfe' : '1px solid transparent'
+              color: mounted && pathname === '/' ? '#3b82f6' : '#4b5563',
+              background: mounted && pathname === '/' ? '#eff6ff' : 'transparent',
+              border: mounted && pathname === '/' ? '1px solid #bfdbfe' : '1px solid transparent'
             }}
           >
             Startups
@@ -67,9 +73,9 @@ export default function Navbar() {
               fontSize: '0.875rem',
               fontWeight: 500,
               transition: 'all 0.2s',
-              color: pathname === '/compare' ? '#3b82f6' : '#4b5563',
-              background: pathname === '/compare' ? '#eff6ff' : 'transparent',
-              border: pathname === '/compare' ? '1px solid #bfdbfe' : '1px solid transparent'
+              color: mounted && pathname === '/compare' ? '#3b82f6' : '#4b5563',
+              background: mounted && pathname === '/compare' ? '#eff6ff' : 'transparent',
+              border: mounted && pathname === '/compare' ? '1px solid #bfdbfe' : '1px solid transparent'
             }}
           >
             Compare
@@ -84,9 +90,9 @@ export default function Navbar() {
               fontSize: '0.875rem',
               fontWeight: 500,
               transition: 'all 0.2s',
-              color: pathname === '/analytics' ? '#3b82f6' : '#4b5563',
-              background: pathname === '/analytics' ? '#eff6ff' : 'transparent',
-              border: pathname === '/analytics' ? '1px solid #bfdbfe' : '1px solid transparent'
+              color: mounted && pathname === '/analytics' ? '#3b82f6' : '#4b5563',
+              background: mounted && pathname === '/analytics' ? '#eff6ff' : 'transparent',
+              border: mounted && pathname === '/analytics' ? '1px solid #bfdbfe' : '1px solid transparent'
             }}
           >
             Analytics

@@ -30,8 +30,8 @@ export default function HomePage() {
   const industries = ['SaaS', 'Marketplace', 'AI', 'Digital Products', 'Analytics', 'Services', 'Education']
   
   return (
-    <div className="min-h-screen">
-        <section id="home" className="pt-24 pb-20 bg-gradient-to-b from-secondary/30 to-background">
+    <div className="min-h-screen" suppressHydrationWarning>
+        <section id="home" className="pt-24 pb-20 bg-gradient-to-b from-secondary/30 to-background" suppressHydrationWarning>
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-8">
