@@ -23,11 +23,25 @@ interface StartupListProps {
 
 export function StartupList({ startups, loading, onStartupClick, onClone, className }: StartupListProps) {
   if (loading) {
-    return <div className="text-center py-12 text-muted-foreground">Loading verified startups...</div>;
+    return (
+      <div className="space-y-4">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="p-6 rounded-lg border bg-card animate-pulse">
+            <div className="h-4 bg-secondary rounded w-1/3 mb-3"></div>
+            <div className="h-3 bg-secondary rounded w-2/3"></div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   if (startups.length === 0) {
-    return <div className="text-center py-12 text-muted-foreground">No startups found matching your criteria</div>;
+    return (
+      <div className="text-center py-12">
+        <p className="text-2xl font-bold text-foreground mb-2">No startups found</p>
+        <p className="text-muted-foreground">Try a different search or filter</p>
+      </div>
+    );
   }
 
   return (
