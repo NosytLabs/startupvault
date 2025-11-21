@@ -1,0 +1,133 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Noto Color Emoji",
+      "role": "body"
+    },
+    {
+      "family": "Segoe UI Emoji",
+      "role": "body"
+    },
+    {
+      "family": "Segoe UI Symbol",
+      "role": "body"
+    },
+    {
+      "family": "Apple Color Emoji",
+      "role": "body"
+    },
+    {
+      "family": "system-ui",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#9CA3AF",
+    "accent": "#FFFFFF",
+    "background": "#000000",
+    "textPrimary": "#000000",
+    "link": "#0E0919"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Noto Color Emoji",
+      "heading": "Noto Color Emoji"
+    },
+    "fontStacks": {
+      "heading": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "body": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "paragraph": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ]
+    },
+    "fontSizes": {
+      "h1": "72px",
+      "h2": "24px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "4px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "4px"
+    },
+    "buttonPrimary": {
+      "background": "#FFFFFF",
+      "textColor": "#000000",
+      "borderRadius": "12px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#111111",
+      "textColor": "#E6E6E6",
+      "borderColor": "#383838",
+      "borderRadius": "8px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": "File saved at: attached_assets/favicon.ico",
+    "ogImage": "https://komposo.ai/komposo-ai.png"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Logo #0 visually represents the brand name 'Komposo' and is located in the header, making it the most suitable choice as the brand logo.",
+    "confidence": 0.9
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 2,
+      "text": "Start Free Trial",
+      "reasoning": "Button #2 has a vibrant white background with strong action-oriented text 'Start Free Trial', making it the primary CTA. It stands out as the most inviting option for users to engage with."
+    },
+    "secondary": {
+      "index": 1,
+      "text": "Get started",
+      "reasoning": "Button #1 has a darker background (#111111) and is less prominent compared to Button #2. It serves as a secondary action with the text 'Get started', which is less urgent than the primary CTA."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "tech-savvy individuals and businesses looking for AI-powered design solutions."
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  }
+}

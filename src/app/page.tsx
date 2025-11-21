@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic';
 import { Features } from '@/components/features';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
-import { useStartupData } from '@/hooks/useStartupData';
+import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Lottie } from '@/components/atoms/Lottie'
 import { branding } from '@/config'
 
@@ -15,28 +15,21 @@ const Testimonials = dynamic(() => import('@/components/layout/testimonials').th
 export default function HomePage() {
   const router = useRouter()
   const [keyword, setKeyword] = useState('')
-  const [isClient] = useState(typeof window !== 'undefined')
+  const [mounted, setMounted] = useState(false)
   const trending = useStartupData({ sort: 'recent', limit: 6 })
   const highMrr = useStartupData({ sort: 'mrr-high', limit: 6 })
 
-  // Note: isClient is now set during initial render to avoid setState in effect
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   const onSearch = () => {
     const params = new URLSearchParams()
     if (keyword) params.set('search', keyword)
     router.push(`/startups?${params.toString()}`)
   }
-
-  if (!isClient) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    )
-  }
+  
+  if (!mounted) return null
   
   return (
     <div className="min-h-screen">
