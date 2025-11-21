@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const startupData = [
-  {"name": "Gumroad", "description": "Go from 0 to $1", "revenue": 878595861, "mrr": 0, "founder": "shl", "industry": "Digital Products", "stage": "Scale"},
+  {"name": "Gumroad", "description": "Go from 0 to $1", "revenue": 878595861, "mrr": 0, "founder": "shl", "industry": "Digital Products", "stage": "Scale", "website": "https://gumroad.com"},
   {"name": "easytools sp. z o.o.", "description": "Tools that help creators sell and advertise", "revenue": 0, "mrr": 82107087, "founder": "easytools", "industry": "SaaS", "stage": "Growth"},
   {"name": "MaidsnBlack", "description": "Home Cleaning Tech Platform", "revenue": 21758670, "mrr": 0, "founder": "rohangilkes", "industry": "Marketplace", "stage": "Growth"},
   {"name": "Stack Influence", "description": "Micro Creator marketing for eComm", "revenue": 19557640, "mrr": 42906, "founder": "laurent_vinc", "industry": "Marketing", "stage": "Growth"},

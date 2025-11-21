@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import { CloneModal } from '@/components/organisms/CloneModal';
+import { SiteScanner } from '@/components/organisms/SiteScanner';
 import { calculateCloneability } from '@/lib/cloneability';
 
 export default function StartupDetailPage() {
@@ -11,6 +12,7 @@ export default function StartupDetailPage() {
   const [startup, setStartup] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [showClone, setShowClone] = useState(false);
+  const [showScanner, setShowScanner] = useState(false);
 
   useEffect(() => {
     const fetchStartup = async () => {
@@ -70,9 +72,14 @@ export default function StartupDetailPage() {
                   <p className="text-4xl font-bold text-primary">{score.overall}/100</p>
                   <p className="text-muted-foreground mt-2">{score.description}</p>
                 </div>
-                <button onClick={() => setShowClone(true)} className="btn btn-primary px-8 py-3 text-lg">
-                  Clone This Startup
-                </button>
+                <div className="flex gap-2">
+                  <button onClick={() => setShowClone(true)} className="btn btn-primary px-8 py-3 text-lg">
+                    Clone Guide
+                  </button>
+                  <button onClick={() => setShowScanner(true)} className="btn btn-secondary px-8 py-3 text-lg">
+                    Scan Website
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -116,6 +123,7 @@ export default function StartupDetailPage() {
       </div>
       <Footer />
       {showClone && <CloneModal startup={startup} onClose={() => setShowClone(false)} />}
+      {showScanner && <SiteScanner startupUrl={startup?.website} onClose={() => setShowScanner(false)} />}
     </>
   );
 }
