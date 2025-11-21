@@ -1,6 +1,10 @@
-// COMPLETE AUTHENTIC TrustMRR Verified Startup Data from trustmrr.com
-// All data sourced directly from TrustMRR leaderboard - verified revenue/MRR metrics
-export const completeTrustMRRStartups = [
+// DEPRECATED - Use trustmrr-all-data.ts instead
+// Kept for backward compatibility
+import { allTrustMRRStartups } from './trustmrr-all-data';
+export const completeTrustMRRStartups = allTrustMRRStartups;
+
+// OLD DATA - DEPRECATED
+const _oldData = [
   { id: "1", name: "Gumroad", description: "Go from 0 to $1 - Creator platform", revenue: 878595861, mrr: 0, founder: "shl", industry: "Digital Products", stage: "Scale", website: "https://gumroad.com", country: "US", ranking: 1, isChampion: true, categories: ["Creator Tools", "Digital Products"] },
   { id: "2", name: "easytools sp. z o.o.", description: "Tools that help creators sell and better advertise their products and courses", revenue: 0, mrr: 82107087, founder: "easytools", industry: "SaaS", stage: "Growth", website: "https://www.easytools.pro", country: "Poland", ranking: 2, isChampion: true, categories: ["Marketing", "SaaS"] },
   { id: "3", name: "MaidsnBlack", description: "Home Cleaning Tech Driven Platform", revenue: 21758670, mrr: 0, founder: "rohangilkes", industry: "Marketplace", stage: "Growth", website: "https://maidsnblack.com", country: "US", ranking: 3, isChampion: false, categories: ["Marketplace", "Services", "Local"] },
@@ -26,19 +30,7 @@ export const completeTrustMRRStartups = [
   { id: "23", name: "TrySpellbound", description: "No-code automation for Notion users with workflow automation", revenue: 1566903, mrr: 1588, founder: "notionsmith", industry: "Tools", stage: "Growth", website: "https://tryspellbound.com", country: "US", ranking: 23, isChampion: false, categories: ["No-Code", "Automation", "Notion Integration", "Tools"] },
 ];
 
-export function calculateCloneabilityScore(startup: any): number {
-  let score = 50;
-  if (startup.mrr > 0) score += 20;
-  if (startup.revenue > 5000000) score += 15;
-  if (startup.stage === "Scale") score += 10;
-  if (startup.stage === "Growth") score += 5;
-  if (startup.industry === "SaaS") score += 5;
-  if (startup.categories?.some((c: string) => ["No-Code", "AI", "Creator Tools"].includes(c))) score += 5;
-  if (startup.isChampion) score += 5;
-  return Math.min(100, score);
-}
+];
 
-// Get total startup count
-export const TOTAL_STARTUPS = completeTrustMRRStartups.length;
-export const TOTAL_REVENUE = completeTrustMRRStartups.reduce((sum, s) => sum + s.revenue, 0);
-export const TOTAL_MRR = completeTrustMRRStartups.reduce((sum, s) => sum + s.mrr, 0);
+// Export from all-data
+export { calculateCloneabilityScore, TOTAL_STARTUPS, TOTAL_REVENUE, TOTAL_MRR } from './trustmrr-all-data';
