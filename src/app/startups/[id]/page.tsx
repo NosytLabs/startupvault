@@ -56,7 +56,6 @@ export default function StartupDetailPage() {
 
   return (
     <>
-      <Navbar />
       <main className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
         <div className="container max-w-4xl mx-auto px-4 py-12">
           <Link href="/startups" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80">

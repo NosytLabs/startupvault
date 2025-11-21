@@ -53,7 +53,6 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="mb-12">
