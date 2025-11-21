@@ -56,7 +56,7 @@ export function PricingPage() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-background to-secondary/20">
+    <section className="py-24 bg-gradient-to-b from-background via-secondary/10 to-background">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -71,10 +71,10 @@ export function PricingPage() {
           {plans.map((plan, idx) => (
             <div
               key={idx}
-              className={`rounded-xl border p-8 flex flex-col transition ${
+              className={`rounded-xl border p-8 flex flex-col transition-all duration-300 ${
                 plan.highlight
-                  ? 'bg-primary/5 border-primary shadow-lg scale-105'
-                  : 'bg-card border-secondary hover:shadow-lg'
+                  ? 'bg-gradient-to-br from-primary/10 to-primary/5 border-primary shadow-2xl scale-105 hover:scale-110'
+                  : 'bg-card border-secondary hover:shadow-xl hover:scale-105'
               }`}
             >
               <div className="mb-6">

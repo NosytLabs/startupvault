@@ -7,7 +7,7 @@ import { StartupList } from '@/components/organisms/StartupList';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { Lottie } from '@/components/atoms/Lottie'
+import Navbar from '@/components/molecules/Navbar';
 import { branding } from '@/config'
 
 const Pricing = dynamic(() => import('@/components/layout/pricing').then(m => m.Pricing), { ssr: false });
@@ -39,6 +39,7 @@ export default function HomePage() {
   
   return (
     <div className="min-h-screen">
+        <Navbar />
         <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-secondary/50 to-background section-fade">
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto text-center">
@@ -55,12 +56,6 @@ export default function HomePage() {
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
                 Browse 50 verified startups, scan their websites for insights, and generate actionable build documentation for your own ventures.
-              </p>
-              <div className="max-w-md mx-auto mb-8">
-                <Lottie src="https://assets10.lottiefiles.com/packages/lf20_pqpmxb1x.json" className="h-40 mx-auto" />
-              </div>
-              <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Discover companies by revenue, industry, stage, tech stack, and more.
               </p>
               <div className="space-y-4 max-w-2xl mx-auto">
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -129,7 +124,7 @@ export default function HomePage() {
               <StartupList
                 startups={trending.startups}
                 loading={trending.loading}
-                className=""
+                className="grid md:grid-cols-2 gap-6"
               />
             )}
           </div>
@@ -149,7 +144,7 @@ export default function HomePage() {
               <StartupList
                 startups={highMrr.startups}
                 loading={highMrr.loading}
-                className=""
+                className="grid md:grid-cols-2 gap-6"
               />
             )}
           </div>
