@@ -18,15 +18,15 @@ export default function Navbar() {
           <Link href="/" className="flex-shrink-0 hover:opacity-75 transition-opacity duration-200">
             <span className="text-xl font-bold text-primary">⭐ StartupVault</span>
           </Link>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6 ml-auto">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 whitespace-nowrap ${
+                className={`text-sm font-medium transition-colors duration-200 px-3 py-2 rounded-md ${
                   pathname === link.href
-                    ? 'text-primary border-b-2 border-primary pb-1'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
                 }`}
               >
                 {link.label}
