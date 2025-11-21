@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generatePRD, generateMVP, generateCursorPrompt, generateTaskList, generateMarkdownPrompt } from '@/lib/doc-generator';
+import { generatePRD, generateMVP, generateCursorPrompt, generateTaskList } from '@/lib/doc-generator';
 
 interface GenerateRequest {
   startup: any;
-  type?: 'prd' | 'mvp' | 'cursor' | 'tasks' | 'build';
+  type?: 'prd' | 'mvp' | 'cursor' | 'tasks';
 }
 
 export async function POST(request: NextRequest) {
@@ -33,10 +33,6 @@ export async function POST(request: NextRequest) {
       case 'tasks':
         content = generateTaskList(startup);
         filename = `${startup.name}_Task_List.md`;
-        break;
-      case 'build':
-        content = generateMarkdownPrompt(startup);
-        filename = `${startup.name}_Build_Instructions.md`;
         break;
       default:
         return NextResponse.json({ error: 'Invalid document type' }, { status: 400 });
