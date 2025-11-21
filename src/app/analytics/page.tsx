@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 
 export default function AnalyticsPage() {
@@ -29,14 +28,12 @@ export default function AnalyticsPage() {
   if (loading)
     return (
       <>
-        <Navbar />
         <div className="min-h-screen flex items-center justify-center">Loading analytics...</div>
       </>
     );
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <h1 className="text-4xl font-bold mb-12">Startup Market Analytics</h1>

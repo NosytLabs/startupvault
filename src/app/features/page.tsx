@@ -1,5 +1,4 @@
 'use client';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 
@@ -49,7 +48,6 @@ export default function FeaturesPage() {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="max-w-3xl mx-auto text-center mb-16">

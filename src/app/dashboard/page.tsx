@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import Link from 'next/link';
 import { useFavorites } from '@/lib/useFavorites';
@@ -20,7 +19,6 @@ export default function DashboardPage() {
   if (!mounted) {
     return (
       <>
-        <Navbar />
         <div className="min-h-screen flex items-center justify-center">Loading...</div>
       </>
     );

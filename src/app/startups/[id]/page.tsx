@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 import { useFavorites } from '@/lib/useFavorites';
@@ -35,7 +34,6 @@ export default function StartupDetailPage() {
   if (!startup) {
     return (
       <>
-        <Navbar />
         <main className="min-h-screen bg-background flex items-center justify-center">
           <div className="text-center">
             <p className="text-muted-foreground mb-4">Startup not found</p>

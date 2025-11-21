@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
 import { CloneModal } from '@/components/organisms/CloneModal';
@@ -23,7 +22,6 @@ export default function StartupsPage() {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-gradient-to-b from-secondary/10 to-background">
         <div className="max-w-4xl mx-auto px-4 py-16">
           <div className="mb-16 animate-fade-in">

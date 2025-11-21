@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
@@ -18,7 +17,6 @@ export default function ComparePage() {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-background">
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="mb-12">

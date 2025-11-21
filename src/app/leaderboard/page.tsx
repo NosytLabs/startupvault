@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Navbar from '@/components/molecules/Navbar';
 
 export default function LeaderboardPage() {
   const router = useRouter();
@@ -31,7 +30,6 @@ export default function LeaderboardPage() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
       <main className="bg-gradient-to-br from-secondary/10 via-background to-secondary/5">
         <div className="container max-w-6xl mx-auto px-4 py-16">
           <div className="mb-16 animate-fade-in">

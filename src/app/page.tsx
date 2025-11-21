@@ -7,7 +7,6 @@ import { StartupList } from '@/components/organisms/StartupList';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import Navbar from '@/components/molecules/Navbar';
 import { branding } from '@/config'
 
 const Pricing = dynamic(() => import('@/components/layout/pricing').then(m => m.Pricing), { ssr: false });
@@ -32,7 +31,6 @@ export default function HomePage() {
   
   return (
     <div className="min-h-screen">
-        <Navbar />
         <section id="home" className="pt-24 pb-20 bg-gradient-to-b from-secondary/30 to-background">
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto text-center">
