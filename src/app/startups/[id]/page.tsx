@@ -89,63 +89,57 @@ export default function StartupDetailPage() {
               <p className="text-sm text-muted-foreground mt-4">
                 {cloneScore >= 80 ? "Highly cloneable - Strong business model" : cloneScore >= 60 ? "Moderately cloneable - Good opportunity" : "Cloneable - Custom approach needed"}
               </p>
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={() => setShowClone(true)} className="btn btn-primary px-6 py-3">
-                    Clone Guide
-                  </button>
-                  <button onClick={() => setShowScanner(true)} className="btn btn-secondary px-6 py-3">
-                    Scan Website
-                  </button>
-                  <button onClick={() => setShowDocGen(true)} className="btn btn-accent px-6 py-3">
-                    📄 Download Build Docs
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4">Score Breakdown</h3>
-                <div className="space-y-3">
-                  {Object.entries(score.factors).map(([key, value]) => (
-                    <div key={key}>
-                      <div className="flex justify-between mb-1">
-                        <span className="text-sm font-medium capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
-                        <span className="text-sm font-bold">{value}/20</span>
-                      </div>
-                      <div className="w-full bg-secondary rounded-full h-2">
-                        <div className="bg-primary rounded-full h-2" style={{ width: `${(value / 20) * 100}%` }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold mb-4">Recommendations</h3>
-                <ul className="space-y-2">
-                  {score.recommendations.map((rec, i) => (
-                    <li key={i} className="flex gap-3 p-3 bg-card rounded-lg">
-                      <span className="text-primary font-bold">→</span>
-                      <span className="text-sm">{rec}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-card border rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-bold mb-4">Founder</h3>
-              <p className="text-lg font-semibold">{startup.founder || 'Unknown'}</p>
             </div>
           </div>
         </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-card rounded-lg border p-6">
+            <h3 className="font-bold mb-4">Business Info</h3>
+            <div className="space-y-3 text-sm">
+              <div><span className="text-muted-foreground">Industry:</span> <span className="font-semibold">{startup.industry}</span></div>
+              <div><span className="text-muted-foreground">Country:</span> <span className="font-semibold">{startup.country}</span></div>
+              <div><span className="text-muted-foreground">Categories:</span> <span className="font-semibold">{startup.categories?.join(', ')}</span></div>
+            </div>
+          </div>
+          <div className="bg-card rounded-lg border p-6">
+            <h3 className="font-bold mb-4">Links</h3>
+            <div className="space-y-2">
+              <a href={startup.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary hover:text-primary/80">
+                Visit Website <span>→</span>
+              </a>
+              <a href={`https://trustmrr.com/founder/${startup.founder}`} target="_blank" rel="noopener noreferrer" className="block text-primary hover:text-primary/80 text-sm">
+                View on TrustMRR <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {relatedStartups.length > 0 && (
+          <div className="bg-card rounded-lg border p-8">
+            <h2 className="text-2xl font-bold mb-6">Similar {startup.industry} Startups</h2>
+            <div className="grid gap-4">
+              {relatedStartups.map(s => (
+                <div
+                  key={s.id}
+                  className="border rounded-lg p-4 hover:bg-secondary/50 transition cursor-pointer"
+                  onClick={() => router.push(`/startups/${s.id}`)}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="font-semibold">{s.name}</div>
+                      <div className="text-sm text-muted-foreground">{s.founder}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-semibold">${(s.revenue || s.mrr) / 1000000 > 1 ? `${(s.revenue || s.mrr) / 1000000}M` : `${((s.revenue || s.mrr) / 1000).toFixed(1)}K`}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
-      <Footer />
-      {showClone && <CloneModal startup={startup} onClose={() => setShowClone(false)} />}
-      {showScanner && <SiteScanner startupUrl={startup?.website} onClose={() => setShowScanner(false)} />}
-      {showDocGen && <DocGenerator startup={startup} onClose={() => setShowDocGen(false)} />}
-    </>
+    </main>
   );
 }

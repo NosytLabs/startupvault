@@ -1,9 +1,9 @@
 'use client';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { Features } from '@/components/features';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
-import { CloneModal } from '@/components/organisms/CloneModal';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
@@ -18,7 +18,6 @@ export default function HomePage() {
   const [keyword, setKeyword] = useState('')
   const [selectedIndustry, setSelectedIndustry] = useState('')
   const [mounted, setMounted] = useState(false)
-  const [cloneStartup, setCloneStartup] = useState<any>(null)
   
   const trending = useStartupData({ sort: 'recent', limit: 8 })
   const highMrr = useStartupData({ sort: 'mrr-high', limit: 8 })
@@ -45,7 +44,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-6">
                 <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
-                  ✓ AUTHENTIC Data from TrustMRR.com - 25 Verified Startups
+                  ✓ AUTHENTIC Data from TrustMRR.com - 23 Verified Startups
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight tracking-tight glow-effect">
@@ -78,6 +77,12 @@ export default function HomePage() {
                   >
                     Search
                   </button>
+                  <Link href="/champions" className="btn btn-secondary h-12 px-8 font-semibold">
+                    🏆 Champions
+                  </Link>
+                  <Link href="/leaderboard" className="btn btn-secondary h-12 px-8 font-semibold">
+                    📊 Leaderboard
+                  </Link>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
                   <button
@@ -125,14 +130,13 @@ export default function HomePage() {
                 startups={trending.startups}
                 loading={trending.loading}
                 onStartupClick={(id) => router.push(`/startups/${id}`)}
-                onClone={setCloneStartup}
                 className=""
               />
             )}
           </div>
         </section>
         <section className="py-20 bg-secondary/30">
-          <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto cv-auto">
+          <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">High MRR Companies</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Explore companies with proven revenue models and strong growth metrics</p>
@@ -147,25 +151,23 @@ export default function HomePage() {
                 startups={highMrr.startups}
                 loading={highMrr.loading}
                 onStartupClick={(id) => router.push(`/startups/${id}`)}
-                onClone={setCloneStartup}
                 className=""
               />
             )}
           </div>
         </section>
-        <div className="cv-auto"><Features /></div>
-        <div className="cv-auto"><Pricing /></div>
+        <div><Features /></div>
+        <div><Pricing /></div>
         <section id="about" className="py-24 bg-gradient-to-b from-background to-secondary/20">
-          <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center cv-auto">
+          <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">About StartupVault</h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {branding.name} • {branding.subbrand} ({branding.longName}) provides an authentic database and cloning service with verified metrics and document generation.
             </p>
           </div>
         </section>
-        <div className="mx-auto"><Testimonials /></div>
+        <div><Testimonials /></div>
         <Footer />
-        {cloneStartup && <CloneModal startup={cloneStartup} onClose={() => setCloneStartup(null)} />}
       </div>
   );
 }
