@@ -11,6 +11,16 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: process.env.NODE_ENV !== 'production',
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/favicon.svg',
+          destination: '/api/favicon',
+        },
+      ],
+    };
+  },
   async headers() {
     return [
       {
