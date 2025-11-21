@@ -42,26 +42,17 @@ export default function LeaderboardPage() {
           </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative z-10">
-              <div className="text-4xl font-bold text-primary mb-2">{leaderboard.length}</div>
-              <div className="text-sm text-muted-foreground font-medium">Total Verified Startups</div>
-            </div>
+          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-primary mb-2">{leaderboard.length}</div>
+            <div className="text-sm text-muted-foreground">Total Verified Startups</div>
           </div>
-          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative z-10">
-              <div className="text-4xl font-bold text-primary mb-2">🏆 {champions.length}</div>
-              <div className="text-sm text-muted-foreground font-medium">Champion Status Startups</div>
-            </div>
+          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-primary mb-2">🏆 {champions.length}</div>
+            <div className="text-sm text-muted-foreground">Champion Status Startups</div>
           </div>
-          <div className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative z-10">
-              <div className="text-4xl font-bold text-primary mb-2">🌍 {countries.length}</div>
-              <div className="text-sm text-muted-foreground font-medium">Countries Represented</div>
-            </div>
+          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-primary mb-2">🌍 {countries.length}</div>
+            <div className="text-sm text-muted-foreground">Countries Represented</div>
           </div>
         </div>
 
@@ -72,11 +63,10 @@ export default function LeaderboardPage() {
             {champions.slice(0, 10).map((startup, idx) => (
               <div 
                 key={startup.id} 
-                className="group relative bg-card rounded-lg border border-border p-5 hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer overflow-hidden"
+                className="bg-card rounded-lg border border-border p-5 hover:shadow-lg hover:border-primary/50 transition-all cursor-pointer"
                 onClick={() => router.push(`/startups/${startup.id}`)}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10 flex items-center justify-between">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="text-2xl font-bold text-primary w-10 text-center">{idx + 1}</div>
                     <div>

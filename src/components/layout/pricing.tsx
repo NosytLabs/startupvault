@@ -10,9 +10,8 @@ export function Pricing() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="group relative p-8 rounded-xl border border-border bg-card hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-            <div className="relative z-10">
+          <div className="p-8 rounded-lg border border-border bg-card hover:shadow-lg transition-all duration-300">
+            <div>
               <h3 className="text-2xl font-bold mb-2 text-foreground">Explorer</h3>
               <p className="text-sm text-muted-foreground mb-6">For research</p>
               <p className="text-4xl font-bold mb-8 text-foreground">Free</p>
@@ -22,12 +21,12 @@ export function Pricing() {
                 <li className="flex items-center gap-3"><span className="text-primary text-lg">✓</span> <span>Industry filtering</span></li>
                 <li className="flex items-center gap-3"><span className="text-muted-foreground text-lg">✗</span> <span className="text-muted-foreground">Build docs</span></li>
               </ul>
-              <button className="w-full btn btn-secondary hover:shadow-md">Get Started</button>
+              <button className="w-full btn btn-secondary">Get Started</button>
             </div>
           </div>
 
-          <div className="group relative p-8 rounded-xl border-2 border-primary bg-gradient-to-br from-primary/15 to-primary/5 md:scale-105 shadow-xl hover:shadow-2xl transition-all duration-300">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 inline-block bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+          <div className="group relative p-8 rounded-xl border-2 border-primary bg-primary/10 md:scale-105 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-xs font-bold shadow-md">
               ⭐ Most Popular
             </div>
             <div className="relative z-10 pt-2">
@@ -45,9 +44,8 @@ export function Pricing() {
             </div>
           </div>
 
-          <div className="group relative p-8 rounded-xl border border-border bg-card hover:shadow-xl hover:border-primary/50 transition-all duration-300">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-            <div className="relative z-10">
+          <div className="p-8 rounded-lg border border-border bg-card hover:shadow-lg transition-all duration-300">
+            <div>
               <h3 className="text-2xl font-bold mb-2 text-foreground">Enterprise</h3>
               <p className="text-sm text-muted-foreground mb-6">For agencies</p>
               <p className="text-4xl font-bold mb-8 text-foreground">Custom</p>
@@ -57,7 +55,7 @@ export function Pricing() {
                 <li className="flex items-center gap-3"><span className="text-primary text-lg">✓</span> <span>Priority support</span></li>
                 <li className="flex items-center gap-3"><span className="text-primary text-lg">✓</span> <span>Custom analysis</span></li>
               </ul>
-              <button className="w-full btn btn-secondary hover:shadow-md">Contact Sales</button>
+              <button className="w-full btn btn-secondary">Contact Sales</button>
             </div>
           </div>
         </div>

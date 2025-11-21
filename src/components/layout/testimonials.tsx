@@ -45,21 +45,17 @@ export function Testimonials() {
           {testimonials.map((testimonial, i) => (
             <div 
               key={i} 
-              className="group relative p-8 rounded-xl bg-card border border-border hover:shadow-lg hover:border-primary/50 transition-all duration-300 overflow-hidden"
-              style={{ animationDelay: `${i * 50}ms` }}
+              className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative z-10">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">★</span>
-                  ))}
-                </div>
-                <p className="text-foreground leading-relaxed mb-6 text-sm">"{testimonial.quote}"</p>
-                <div className="pt-4 border-t border-border">
-                  <p className="font-bold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-primary font-medium">{testimonial.role}</p>
-                </div>
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-sm">★</span>
+                ))}
+              </div>
+              <p className="text-foreground leading-relaxed mb-6 text-sm">"{testimonial.quote}"</p>
+              <div className="pt-4 border-t border-border">
+                <p className="font-bold text-foreground text-sm">{testimonial.author}</p>
+                <p className="text-xs text-primary font-medium">{testimonial.role}</p>
               </div>
             </div>
           ))}

@@ -42,7 +42,7 @@ export default function HomePage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight tracking-tight">
-                {branding.subbrand}:<br className="hidden sm:block" /> Clone Proven Startup Models
+                {branding.subbrand}: Clone Proven Startup Models
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto">
                 Discover $1.1B+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to study and clone.
