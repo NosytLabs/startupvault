@@ -5,6 +5,7 @@ import Navbar from '@/components/molecules/Navbar';
 import { Footer } from '@/components/layout/footer';
 import { CloneModal } from '@/components/organisms/CloneModal';
 import { SiteScanner } from '@/components/organisms/SiteScanner';
+import { DocGenerator } from '@/components/organisms/DocGenerator';
 import { calculateCloneability } from '@/lib/cloneability';
 
 export default function StartupDetailPage() {
@@ -13,6 +14,7 @@ export default function StartupDetailPage() {
   const [loading, setLoading] = useState(true);
   const [showClone, setShowClone] = useState(false);
   const [showScanner, setShowScanner] = useState(false);
+  const [showDocGen, setShowDocGen] = useState(false);
 
   useEffect(() => {
     const fetchStartup = async () => {
@@ -73,11 +75,14 @@ export default function StartupDetailPage() {
                   <p className="text-muted-foreground mt-2">{score.description}</p>
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => setShowClone(true)} className="btn btn-primary px-8 py-3 text-lg">
+                  <button onClick={() => setShowClone(true)} className="btn btn-primary px-6 py-3">
                     Clone Guide
                   </button>
-                  <button onClick={() => setShowScanner(true)} className="btn btn-secondary px-8 py-3 text-lg">
+                  <button onClick={() => setShowScanner(true)} className="btn btn-secondary px-6 py-3">
                     Scan Website
+                  </button>
+                  <button onClick={() => setShowDocGen(true)} className="btn btn-accent px-6 py-3">
+                    📄 Download Build Docs
                   </button>
                 </div>
               </div>
@@ -124,6 +129,7 @@ export default function StartupDetailPage() {
       <Footer />
       {showClone && <CloneModal startup={startup} onClose={() => setShowClone(false)} />}
       {showScanner && <SiteScanner startupUrl={startup?.website} onClose={() => setShowScanner(false)} />}
+      {showDocGen && <DocGenerator startup={startup} onClose={() => setShowDocGen(false)} />}
     </>
   );
 }
