@@ -46,29 +46,32 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', width: '100%' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem', width: '100%' }}>
       {startups.map((startup) => (
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
           style={{ 
-            padding: '1.25rem', 
-            borderRadius: '0.5rem', 
-            border: '1px solid #e5e7eb',
+            padding: '1.5rem', 
+            borderRadius: '0.75rem', 
+            border: '1px solid #ddd',
             backgroundColor: '#fff',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
-            display: 'block'
+            display: 'block',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
-            e.currentTarget.style.borderColor = '#93c5fd';
-            e.currentTarget.style.backgroundColor = '#f9fafb';
+            e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+            e.currentTarget.style.borderColor = '#3b82f6';
+            e.currentTarget.style.backgroundColor = '#f8fafc';
+            e.currentTarget.style.transform = 'translateY(-4px)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = 'none';
-            e.currentTarget.style.borderColor = '#e5e7eb';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
+            e.currentTarget.style.borderColor = '#ddd';
             e.currentTarget.style.backgroundColor = '#fff';
+            e.currentTarget.style.transform = 'translateY(0)';
           }}
         >
           <div className="mb-4">
