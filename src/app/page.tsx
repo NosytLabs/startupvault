@@ -33,16 +33,16 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
         <Navbar />
-        <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-secondary/50 to-background section-fade">
+        <section id="home" className="pt-24 pb-20 bg-gradient-to-b from-secondary/30 to-background">
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="mb-6">
-                <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold mb-4">
-                  ✓ AUTHENTIC Data from TrustMRR.com - 50 Verified Startups
+              <div className="mb-8">
+                <span className="inline-block px-5 py-2.5 bg-primary/15 text-primary rounded-full text-xs font-semibold mb-6 backdrop-blur">
+                  ✓ AUTHENTIC Data • 50 Verified Startups • $1.1B+ Total Revenue
                 </span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight tracking-tight glow-effect">
-                {branding.subbrand}: Clone Proven Startup Models
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight tracking-tight">
+                {branding.subbrand}:<br className="hidden sm:block" /> Clone Proven Startup Models
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto">
                 Discover $1.1B+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to study and clone.

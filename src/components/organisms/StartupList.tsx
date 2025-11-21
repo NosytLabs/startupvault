@@ -51,40 +51,40 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="block p-4 rounded border border-border bg-card hover:shadow-md hover:border-primary transition-all cursor-pointer active:shadow-sm"
+          className="block p-5 rounded-lg border border-border bg-card hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer active:shadow-md hover:bg-card/80"
         >
-          <div className="mb-3">
-            <div className="flex items-center gap-2 mb-1">
-              <h3 className="font-bold text-foreground text-base">{startup.name}</h3>
-              {startup.ranking && startup.ranking <= 5 && <span className="text-lg">🏆</span>}
+          <div className="mb-4">
+            <div className="flex items-center gap-3 mb-2">
+              <h3 className="font-bold text-foreground text-base leading-tight">{startup.name}</h3>
+              {startup.ranking && startup.ranking <= 5 && <span className="text-lg animate-bounce" style={{animationDuration: '2s'}}>🏆</span>}
             </div>
-            <p className="text-xs text-muted-foreground line-clamp-2">{startup.description}</p>
-            <p className="text-xs text-muted-foreground mt-1">by {startup.founder}</p>
+            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{startup.description}</p>
+            <p className="text-xs text-muted-foreground mt-2">by <span className="font-medium">{startup.founder}</span></p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {startup.revenue && (
-              <div className="p-2 rounded bg-secondary/50 border border-border/50">
-                <p className="text-xs font-medium text-muted-foreground">Revenue</p>
-                <p className="text-sm font-bold text-primary">${(startup.revenue / 1000000).toFixed(1)}M</p>
+              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Revenue</p>
+                <p className="text-sm font-bold text-primary mt-1">${(startup.revenue / 1000000).toFixed(1)}M</p>
               </div>
             )}
             {startup.mrr && (
-              <div className="p-2 rounded bg-secondary/50 border border-border/50">
-                <p className="text-xs font-medium text-muted-foreground">MRR</p>
-                <p className="text-sm font-bold text-primary">${(startup.mrr / 1000).toFixed(0)}K</p>
+              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">MRR</p>
+                <p className="text-sm font-bold text-primary mt-1">${(startup.mrr / 1000).toFixed(0)}K</p>
               </div>
             )}
             {startup.industry && (
-              <div className="p-2 rounded bg-secondary/50 border border-border/50">
-                <p className="text-xs font-medium text-muted-foreground">Industry</p>
-                <p className="text-sm font-bold text-foreground">{startup.industry}</p>
+              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Industry</p>
+                <p className="text-sm font-bold text-foreground mt-1">{startup.industry}</p>
               </div>
             )}
             {startup.stage && (
-              <div className="p-2 rounded bg-secondary/50 border border-border/50">
-                <p className="text-xs font-medium text-muted-foreground">Stage</p>
-                <p className="text-sm font-bold text-foreground">{startup.stage}</p>
+              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Stage</p>
+                <p className="text-sm font-bold text-foreground mt-1">{startup.stage}</p>
               </div>
             )}
           </div>
