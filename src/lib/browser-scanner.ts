@@ -103,7 +103,7 @@ export async function scanWebsite(url: string): Promise<SiteAnalysis> {
     return {
       url,
       title,
-      description,
+      description: description || 'No description available',
       features,
       pricing,
       techStack,

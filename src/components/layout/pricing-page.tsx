@@ -1,6 +1,5 @@
 'use client';
 
-import { Check } from 'lucide-react';
 import Link from 'next/link';
 
 export function PricingPage() {
@@ -90,7 +89,7 @@ export function PricingPage() {
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3 text-sm">
-                      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span className="text-primary font-bold flex-shrink-0 mt-0.5">✓</span>
                       <span className="text-foreground">{feature}</span>
                     </li>
                   ))}
