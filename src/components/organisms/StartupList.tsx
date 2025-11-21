@@ -83,29 +83,29 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             <p className="text-xs text-muted-foreground mt-2">by <span className="font-medium">{startup.founder}</span></p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {startup.revenue && (
-              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Revenue</p>
-                <p className="text-sm font-bold text-primary mt-1">${(startup.revenue / 1000000).toFixed(1)}M</p>
+              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', border: '1px solid #bfdbfe', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)'; }}>
+                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Revenue</p>
+                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#3b82f6', marginTop: '0.25rem' }}>${(startup.revenue / 1000000).toFixed(1)}M</p>
               </div>
             )}
             {startup.mrr && (
-              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">MRR</p>
-                <p className="text-sm font-bold text-primary mt-1">${(startup.mrr / 1000).toFixed(0)}K</p>
+              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%)', border: '1px solid #fbbf24', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%)'; }}>
+                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>MRR</p>
+                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#f59e0b', marginTop: '0.25rem' }}>${(startup.mrr / 1000).toFixed(0)}K</p>
               </div>
             )}
             {startup.industry && (
-              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Industry</p>
-                <p className="text-sm font-bold text-foreground mt-1">{startup.industry}</p>
+              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)', border: '1px solid #a5b4fc', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)'; }}>
+                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Industry</p>
+                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#4f46e5', marginTop: '0.25rem' }}>{startup.industry}</p>
               </div>
             )}
             {startup.stage && (
-              <div className="p-3 rounded-md bg-gradient-to-br from-secondary/60 to-secondary/40 border border-border hover:from-secondary/80 hover:to-secondary/60 transition-colors">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">Stage</p>
-                <p className="text-sm font-bold text-foreground mt-1">{startup.stage}</p>
+              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)', border: '1px solid #d8b4fe', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)'; }}>
+                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Stage</p>
+                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#9333ea', marginTop: '0.25rem' }}>{startup.stage}</p>
               </div>
             )}
           </div>

@@ -70,31 +70,43 @@ export default function HomePage() {
                     📊 Leaderboard
                   </Link>
                 </div>
-                <div className="flex flex-wrap gap-3 justify-center">
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
                   <button
                     onClick={() => {
                       setSelectedIndustry('')
                       onSearch()
                     }}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                      selectedIndustry === '' 
-                        ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' 
-                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border/50'
-                    }`}
+                    style={{
+                      padding: '0.5rem 1.25rem',
+                      borderRadius: '9999px',
+                      fontSize: '0.875rem',
+                      fontWeight: 600,
+                      transition: 'all 0.25s',
+                      border: selectedIndustry === '' ? '2px solid #3b82f6' : '2px solid #e5e7eb',
+                      backgroundColor: selectedIndustry === '' ? '#eff6ff' : '#f9fafb',
+                      color: selectedIndustry === '' ? '#3b82f6' : '#4b5563',
+                      cursor: 'pointer',
+                      boxShadow: selectedIndustry === '' ? '0 4px 12px rgba(59, 130, 246, 0.2)' : 'none'
+                    }}
                   >
                     All Industries
                   </button>
                   {industries.map((ind) => (
                     <button
                       key={ind}
-                      onClick={() => {
-                        setSelectedIndustry(ind)
+                      onClick={() => setSelectedIndustry(ind)}
+                      style={{
+                        padding: '0.5rem 1.25rem',
+                        borderRadius: '9999px',
+                        fontSize: '0.875rem',
+                        fontWeight: 600,
+                        transition: 'all 0.25s',
+                        border: selectedIndustry === ind ? '2px solid #3b82f6' : '2px solid #e5e7eb',
+                        backgroundColor: selectedIndustry === ind ? '#eff6ff' : '#f9fafb',
+                        color: selectedIndustry === ind ? '#3b82f6' : '#4b5563',
+                        cursor: 'pointer',
+                        boxShadow: selectedIndustry === ind ? '0 4px 12px rgba(59, 130, 246, 0.2)' : 'none'
                       }}
-                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                        selectedIndustry === ind 
-                          ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-105' 
-                          : 'bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border/50'
-                      }`}
                     >
                       {ind}
                     </button>
