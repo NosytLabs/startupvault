@@ -22,6 +22,8 @@ interface StartupListProps {
 export function StartupList({ startups, loading, className }: StartupListProps) {
   const router = useRouter();
 
+  console.log('StartupList render:', { count: startups.length, loading, className });
+
   if (loading) {
     return (
       <div className={`${className || 'space-y-4'}`}>
@@ -55,8 +57,8 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="p-6 rounded-lg border bg-card hover:shadow-xl hover:border-primary/70 transition-all duration-300 cursor-pointer hover:scale-[1.02] animate-fade-in"
-          style={{ animationDelay: `${index * 50}ms` }}
+          className="p-6 rounded-lg border bg-card hover:shadow-xl hover:border-primary/70 transition-all duration-300 cursor-pointer hover:scale-[1.02] animate-slide-up"
+          style={{ animationDelay: `${index * 100}ms` }}
         >
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1">
