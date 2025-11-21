@@ -57,7 +57,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="p-6 rounded-lg border bg-card hover:shadow-xl hover:border-primary/70 transition-all duration-300 cursor-pointer hover:scale-[1.02] animate-slide-up"
+          className="p-6 rounded-lg border-2 border-border bg-card hover:shadow-2xl hover:border-primary/80 transition-all duration-300 cursor-pointer hover:scale-[1.02] animate-slide-up shadow-md"
           style={{ animationDelay: `${index * 50}ms` }}
         >
           <div className="flex justify-between items-start mb-4">
