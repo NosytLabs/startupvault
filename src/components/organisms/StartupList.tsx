@@ -57,7 +57,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="card p-6 hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer hover:scale-105 animate-slide-up"
+          className="p-6 rounded-lg border border-border bg-card hover:shadow-xl hover:border-primary/70 cursor-pointer transition-all duration-300 animate-slide-up hover:translate-y-[-2px]"
           style={{ animationDelay: `${index * 50}ms` }}
         >
           <div className="flex justify-between items-start mb-4">
@@ -71,28 +71,28 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-2 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
             {startup.revenue ? (
-              <div className="p-3 bg-primary/5 hover:bg-primary/10 rounded-md transition">
-                <p className="text-xs text-muted-foreground/80 font-medium">Revenue</p>
+              <div className="p-3 bg-primary/10 rounded-md transition hover:bg-primary/20">
+                <p className="text-xs text-muted-foreground font-medium">Revenue</p>
                 <p className="font-bold text-primary mt-1">${(startup.revenue / 1000000).toFixed(1)}M</p>
               </div>
             ) : null}
             {startup.mrr ? (
-              <div className="p-3 bg-accent/5 hover:bg-accent/10 rounded-md transition">
-                <p className="text-xs text-muted-foreground/80 font-medium">MRR</p>
+              <div className="p-3 bg-accent/10 rounded-md transition hover:bg-accent/20">
+                <p className="text-xs text-muted-foreground font-medium">MRR</p>
                 <p className="font-bold text-accent mt-1">${(startup.mrr / 1000).toFixed(0)}K</p>
               </div>
             ) : null}
             {startup.industry && (
-              <div className="p-3 bg-secondary/5 hover:bg-secondary/10 rounded-md transition">
-                <p className="text-xs text-muted-foreground/80 font-medium">Industry</p>
+              <div className="p-3 bg-secondary/10 rounded-md transition hover:bg-secondary/20">
+                <p className="text-xs text-muted-foreground font-medium">Industry</p>
                 <p className="font-bold text-foreground text-xs mt-1">{startup.industry}</p>
               </div>
             )}
             {startup.stage && (
-              <div className="p-3 bg-blue-500/5 hover:bg-blue-500/10 rounded-md transition">
-                <p className="text-xs text-muted-foreground/80 font-medium">Stage</p>
+              <div className="p-3 bg-blue-500/10 rounded-md transition hover:bg-blue-500/20">
+                <p className="text-xs text-muted-foreground font-medium">Stage</p>
                 <p className="font-bold text-blue-400 text-xs mt-1">{startup.stage}</p>
               </div>
             )}
