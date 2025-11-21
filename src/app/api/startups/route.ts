@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { realTrustMRRData } from '@/lib/trustmrr-data';
-
-const startupData = realTrustMRRData.map((s, i) => ({ id: `${i + 1}`, ...s }));
+import { completeTrustMRRStartups } from '@/lib/trustmrr-complete-data';
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,10 +9,8 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search');
     const industry = searchParams.get('industry');
     const country = searchParams.get('country');
-    const category = searchParams.get('category');
-    const isChampion = searchParams.get('champion') === 'true';
 
-    let results = [...startupData];
+    let results = [...completeTrustMRRStartups];
 
     if (search) {
       const term = search.toLowerCase();
@@ -22,8 +18,7 @@ export async function GET(request: NextRequest) {
         (s) =>
           s.name.toLowerCase().includes(term) ||
           s.description?.toLowerCase().includes(term) ||
-          s.founder?.toLowerCase().includes(term) ||
-          s.country?.toLowerCase().includes(term),
+          s.founder?.toLowerCase().includes(term),
       );
     }
 
@@ -35,24 +30,12 @@ export async function GET(request: NextRequest) {
       results = results.filter((s) => s.country?.toLowerCase() === country.toLowerCase());
     }
 
-    if (category) {
-      results = results.filter((s) => 
-        s.categories?.some(c => c.toLowerCase().includes(category.toLowerCase()))
-      );
-    }
-
-    if (isChampion) {
-      results = results.filter((s) => s.isChampion === true);
-    }
-
     if (sort === 'mrr-high') {
       results.sort((a, b) => b.mrr - a.mrr);
     } else if (sort === 'revenue-high') {
       results.sort((a, b) => b.revenue - a.revenue);
-    } else if (sort === 'ranking') {
+    } else {
       results.sort((a, b) => (a.ranking || 999) - (b.ranking || 999));
-    } else if (sort === 'recent') {
-      results.sort((a, b) => parseInt(b.id) - parseInt(a.id));
     }
 
     return NextResponse.json(results.slice(0, limit));

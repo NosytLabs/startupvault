@@ -1,78 +1,94 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import Navbar from '@/components/molecules/Navbar';
-import { Footer } from '@/components/layout/footer';
-import { CloneModal } from '@/components/organisms/CloneModal';
-import { SiteScanner } from '@/components/organisms/SiteScanner';
-import { DocGenerator } from '@/components/organisms/DocGenerator';
-import { calculateCloneability } from '@/lib/cloneability';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { completeTrustMRRStartups, calculateCloneabilityScore } from '@/lib/trustmrr-complete-data';
 
 export default function StartupDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const [startup, setStartup] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [showClone, setShowClone] = useState(false);
-  const [showScanner, setShowScanner] = useState(false);
-  const [showDocGen, setShowDocGen] = useState(false);
+  const [cloneScore, setCloneScore] = useState(0);
+  const [relatedStartups, setRelatedStartups] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetchStartup = async () => {
-      try {
-        const res = await fetch(`/api/startups/${params.id}`);
-        if (res.ok) {
-          const data = await res.json();
-          setStartup(data);
-        }
-      } catch (err) {
-        console.error('Failed to fetch startup', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (params.id) fetchStartup();
+    const id = params.id as string;
+    const found = completeTrustMRRStartups.find(s => s.id === id);
+    if (found) {
+      setStartup(found);
+      const score = calculateCloneabilityScore(found);
+      setCloneScore(score);
+      
+      const related = completeTrustMRRStartups
+        .filter(s => s.industry === found.industry && s.id !== id)
+        .slice(0, 3);
+      setRelatedStartups(related);
+    }
   }, [params.id]);
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  if (!startup) return <div className="min-h-screen flex items-center justify-center">Startup not found</div>;
+  if (!startup) {
+    return (
+      <main className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-muted-foreground mb-4">Startup not found</p>
+          <Link href="/" className="text-primary hover:text-primary/80">Back to home</Link>
+        </div>
+      </main>
+    );
+  }
 
-  const score = calculateCloneability(startup);
+  const scoreColor = cloneScore >= 80 ? 'text-green-600' : cloneScore >= 60 ? 'text-yellow-600' : 'text-orange-600';
+  const progressColor = cloneScore >= 80 ? 'bg-green-600' : cloneScore >= 60 ? 'bg-yellow-600' : 'bg-orange-600';
 
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen bg-background">
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <div className="mb-12">
-            <h1 className="text-5xl font-bold mb-4">{startup.name}</h1>
-            <p className="text-xl text-muted-foreground mb-6">{startup.description}</p>
+    <main className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
+      <div className="container max-w-4xl mx-auto px-4 py-12">
+        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80">
+          <span>←</span> Back to Startups
+        </Link>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-              <div className="p-4 bg-card border rounded-lg">
-                <p className="text-sm text-muted-foreground">Annual Revenue</p>
-                <p className="text-2xl font-bold">${(startup.revenue / 1000000).toFixed(1)}M</p>
-              </div>
-              <div className="p-4 bg-card border rounded-lg">
-                <p className="text-sm text-muted-foreground">Monthly Revenue</p>
-                <p className="text-2xl font-bold">${(startup.mrr / 1000).toFixed(0)}K</p>
-              </div>
-              <div className="p-4 bg-card border rounded-lg">
-                <p className="text-sm text-muted-foreground">Industry</p>
-                <p className="text-xl font-bold">{startup.industry}</p>
-              </div>
-              <div className="p-4 bg-card border rounded-lg">
-                <p className="text-sm text-muted-foreground">Stage</p>
-                <p className="text-xl font-bold">{startup.stage}</p>
-              </div>
+        <div className="bg-card rounded-lg border p-8 mb-8">
+          <div className="flex items-start justify-between mb-6">
+            <div>
+              <div className="text-sm text-muted-foreground mb-2">Rank #{startup.ranking}</div>
+              <h1 className="text-4xl font-bold mb-2">{startup.name}</h1>
+              <p className="text-lg text-muted-foreground">by {startup.founder}</p>
             </div>
+            {startup.isChampion && <div className="text-5xl">🏆</div>}
+          </div>
+          <p className="text-lg mb-6">{startup.description}</p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-secondary/50 rounded-lg p-4">
+              <div className="text-sm text-muted-foreground mb-2">Revenue</div>
+              <div className="text-2xl font-bold">${(startup.revenue / 1000000).toFixed(1)}M</div>
+            </div>
+            <div className="bg-secondary/50 rounded-lg p-4">
+              <div className="text-sm text-muted-foreground mb-2">MRR</div>
+              <div className="text-2xl font-bold">${(startup.mrr / 1000000).toFixed(2)}M</div>
+            </div>
+            <div className="bg-secondary/50 rounded-lg p-4">
+              <div className="text-sm text-muted-foreground mb-2">Stage</div>
+              <div className="text-2xl font-bold">{startup.stage}</div>
+            </div>
+          </div>
+        </div>
 
-            <div className="p-6 bg-primary/10 rounded-lg mb-8">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-sm font-semibold text-muted-foreground">Cloneability Score</p>
-                  <p className="text-4xl font-bold text-primary">{score.overall}/100</p>
-                  <p className="text-muted-foreground mt-2">{score.description}</p>
+        <div className="bg-card rounded-lg border p-8 mb-8">
+          <h2 className="text-2xl font-bold mb-6">AI Cloneability Score</h2>
+          <div className="flex items-center gap-8">
+            <div className="text-center">
+              <div className={`text-6xl font-bold ${scoreColor}`}>{cloneScore}</div>
+              <div className="text-sm text-muted-foreground mt-2">/100</div>
+            </div>
+            <div className="flex-1">
+              <div className="w-full bg-secondary rounded-full h-4 overflow-hidden">
+                <div className={`h-full ${progressColor} transition-all`} style={{ width: `${cloneScore}%` }}></div>
+              </div>
+              <p className="text-sm text-muted-foreground mt-4">
+                {cloneScore >= 80 ? "Highly cloneable - Strong business model" : cloneScore >= 60 ? "Moderately cloneable - Good opportunity" : "Cloneable - Custom approach needed"}
+              </p>
                 </div>
                 <div className="flex gap-2">
                   <button onClick={() => setShowClone(true)} className="btn btn-primary px-6 py-3">
