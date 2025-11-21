@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 import { useRouter } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from '@/components/molecules/Navbar';
 import { branding } from '@/config'
 
@@ -17,14 +17,9 @@ export default function HomePage() {
   const router = useRouter()
   const [keyword, setKeyword] = useState('')
   const [selectedIndustry, setSelectedIndustry] = useState('')
-  const [mounted, setMounted] = useState(false)
   
   const trending = useStartupData({ sort: 'recent', limit: 8 })
   const highMrr = useStartupData({ sort: 'mrr-high', limit: 8 })
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
   
   const onSearch = () => {
     const params = new URLSearchParams()
@@ -33,9 +28,7 @@ export default function HomePage() {
     router.push(`/startups?${params.toString()}`)
   }
 
-  const industries = ['SaaS', 'Marketplace', 'AI', 'Digital Products', 'Analytics', 'Services', 'Education'];
-  
-  if (!mounted) return null
+  const industries = ['SaaS', 'Marketplace', 'AI', 'Digital Products', 'Analytics', 'Services', 'Education']
   
   return (
     <div className="min-h-screen">

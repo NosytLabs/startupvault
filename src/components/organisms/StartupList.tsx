@@ -22,12 +22,12 @@ interface StartupListProps {
 export function StartupList({ startups, loading, className }: StartupListProps) {
   const router = useRouter();
 
-  console.log('StartupList render:', { count: startups.length, loading, className });
-
   if (loading) {
+    const gridCols = className?.includes('grid') ? 
+      (className.includes('md:grid-cols-2') ? 2 : 3) : 1;
     return (
-      <div className={`${className || 'space-y-4'}`}>
-        {[1, 2, 3, 4].map((i) => (
+      <div className={className || 'space-y-4'}>
+        {[...Array(gridCols * 2)].map((_, i) => (
           <div key={i} className="p-6 rounded-lg border bg-card animate-pulse">
             <div className="h-5 bg-secondary rounded w-1/3 mb-4"></div>
             <div className="h-3 bg-secondary rounded w-2/3 mb-3"></div>
@@ -58,7 +58,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
           className="p-6 rounded-lg border bg-card hover:shadow-xl hover:border-primary/70 transition-all duration-300 cursor-pointer hover:scale-[1.02] animate-slide-up"
-          style={{ animationDelay: `${index * 100}ms` }}
+          style={{ animationDelay: `${index * 50}ms` }}
         >
           <div className="flex justify-between items-start mb-4">
             <div className="flex-1">

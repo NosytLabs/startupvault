@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Navbar from '@/components/molecules/Navbar';
 
 export default function LeaderboardPage() {
   const router = useRouter();
@@ -30,13 +30,11 @@ export default function LeaderboardPage() {
     : leaderboard;
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
-      <div className="container max-w-6xl mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80">
-          <span>←</span> Back to Home
-        </Link>
-
-        <h1 className="text-4xl md:text-5xl font-bold mb-2">TrustMRR Global Leaderboard</h1>
+    <div className="min-h-screen">
+      <Navbar />
+      <main className="bg-gradient-to-br from-background to-secondary/20">
+        <div className="container max-w-6xl mx-auto px-4 py-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-2">TrustMRR Global Leaderboard</h1>
         <p className="text-lg text-muted-foreground mb-8">
           {leaderboard.length} verified startups ranked by performance • {champions.length} Champions
         </p>
@@ -151,7 +149,8 @@ export default function LeaderboardPage() {
             )}
           </div>
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   );
 }
