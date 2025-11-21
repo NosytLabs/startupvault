@@ -4,13 +4,14 @@ import { realTrustMRRData } from '@/lib/trustmrr-data';
 const startupData = realTrustMRRData.map((s, i) => ({ id: `${i + 1}`, ...s }));
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const sort = searchParams.get('sort') || 'recent';
-  const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 100);
-  const search = searchParams.get('search');
-  const industry = searchParams.get('industry');
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const sort = searchParams.get('sort') || 'recent';
+    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 100);
+    const search = searchParams.get('search');
+    const industry = searchParams.get('industry');
 
-  let results = [...startupData];
+    let results = [...startupData];
 
   if (search) {
     const term = search.toLowerCase();
