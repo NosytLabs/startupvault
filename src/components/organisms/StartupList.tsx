@@ -46,12 +46,30 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   }
 
   return (
-    <div className={className || 'space-y-3'}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem', width: '100%' }}>
       {startups.map((startup) => (
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="block p-5 rounded-lg border border-border bg-card hover:shadow-lg hover:border-primary/50 transition-all duration-300 cursor-pointer active:shadow-md hover:bg-card/80"
+          style={{ 
+            padding: '1.25rem', 
+            borderRadius: '0.5rem', 
+            border: '1px solid #e5e7eb',
+            backgroundColor: '#fff',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            display: 'block'
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0,0,0,0.1)';
+            e.currentTarget.style.borderColor = '#93c5fd';
+            e.currentTarget.style.backgroundColor = '#f9fafb';
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.boxShadow = 'none';
+            e.currentTarget.style.borderColor = '#e5e7eb';
+            e.currentTarget.style.backgroundColor = '#fff';
+          }}
         >
           <div className="mb-4">
             <div className="flex items-center gap-3 mb-2">
