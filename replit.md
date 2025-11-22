@@ -156,6 +156,16 @@ POST /api/generate-docs          # Generate PRD/MVP/tasks (future)
 
 ## ✨ Recent Fixes
 
+### November 22, 2025 - Cache & Asset Optimization
+- Implemented smart Cache-Control headers in next.config.js:
+  - Pages: `max-age=0, must-revalidate` (always fresh)
+  - API routes: `no-store, must-revalidate` (never cached)
+  - Static assets: `max-age=31536000, immutable` (1-year cache)
+- Fixed favicon.svg serving by removing faulty rewrite configuration
+- Cleaned repository: removed 4 promotional markdown files from attached_assets/
+- Cleaned temporary screenshots and test images
+- Verified all pages display correctly with color-coded gradient badges
+
 ### UI/UX Fixes (Final Session)
 - Fixed navbar hydration mismatch with client-side mounting
 - Removed duplicate navbar renders from all pages
@@ -236,7 +246,7 @@ User → Leaderboard → Filter by country → See top performers
 - Optimized for Replit's 5000 port access
 - Production-ready build configuration
 
-**Last Updated:** November 21, 2025
+**Last Updated:** November 22, 2025
 **Build Status:** ✅ Production Ready
 **Data Status:** ✅ 100% Authentic TrustMRR
 **Test Status:** ✅ All Pages Verified
