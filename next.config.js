@@ -11,6 +11,7 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: process.env.NODE_ENV !== 'production',
   },
+  allowedDevOrigins: ['127.0.0.1', 'localhost'],
   async headers() {
     return [
       {
