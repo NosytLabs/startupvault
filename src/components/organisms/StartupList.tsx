@@ -46,41 +46,59 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem', width: '100%' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem', width: '100%' }}>
       {startups.map((startup) => (
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
           style={{ 
-            padding: '1.5rem', 
-            borderRadius: '0.75rem', 
-            border: '1px solid #ddd',
+            padding: '2rem', 
+            borderRadius: '1.25rem', 
+            border: '1px solid #e5e7eb',
             backgroundColor: '#fff',
             cursor: 'pointer',
-            transition: 'all 0.3s ease',
+            transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
             display: 'block',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+            boxShadow: '0 4px 16px rgba(0,0,0,0.06)'
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+            e.currentTarget.style.boxShadow = '0 24px 48px rgba(59, 130, 246, 0.25)';
             e.currentTarget.style.borderColor = '#3b82f6';
-            e.currentTarget.style.backgroundColor = '#f8fafc';
-            e.currentTarget.style.transform = 'translateY(-4px)';
+            e.currentTarget.style.backgroundColor = '#f8f9ff';
+            e.currentTarget.style.transform = 'translateY(-12px) scale(1.02)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
-            e.currentTarget.style.borderColor = '#ddd';
+            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.06)';
+            e.currentTarget.style.borderColor = '#e5e7eb';
             e.currentTarget.style.backgroundColor = '#fff';
-            e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.transform = 'translateY(0) scale(1)';
           }}
         >
-          <div className="mb-4">
-            <div className="flex items-center gap-3 mb-2">
-              <h3 className="font-bold text-foreground text-base leading-tight">{startup.name}</h3>
-              {startup.ranking && startup.ranking <= 5 && <span className="text-lg animate-bounce" style={{animationDuration: '2s'}}>🏆</span>}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+              <h3 style={{
+                fontWeight: 700,
+                color: '#0f172a',
+                fontSize: '1.125rem',
+                lineHeight: 1.3,
+                letterSpacing: '-0.5px'
+              }}>{startup.name}</h3>
+              {startup.ranking && startup.ranking <= 5 && <span style={{fontSize: '1.25rem'}}>🏆</span>}
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">{startup.description}</p>
-            <p className="text-xs text-muted-foreground mt-2">by <span className="font-medium">{startup.founder}</span></p>
+            <p style={{
+              fontSize: '0.875rem',
+              color: '#6b7280',
+              marginBottom: '0.75rem',
+              fontWeight: 500
+            }}>by <span style={{fontWeight: 600}}>{startup.founder}</span></p>
+            <p style={{
+              fontSize: '0.9375rem',
+              color: '#4b5563',
+              lineHeight: 1.6,
+              maxHeight: '3rem',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>{startup.description}</p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">

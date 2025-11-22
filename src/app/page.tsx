@@ -83,29 +83,118 @@ export default function HomePage() {
               }}>
                 Browse 50 verified startups, scan their websites for insights, and generate actionable build documentation for your own ventures.
               </p>
-              <div className="space-y-4 max-w-2xl mx-auto">
-                <div className="flex flex-col sm:flex-row gap-3">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '42rem', margin: '0 auto' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <input
                     value={keyword}
                     onChange={e => setKeyword(e.target.value)}
                     onKeyPress={e => e.key === 'Enter' && onSearch()}
                     placeholder="Search companies, founders, keywords..."
-                    className="input flex-1 h-12 px-4"
+                    style={{
+                      width: '100%',
+                      height: '3rem',
+                      padding: '0 1rem',
+                      fontSize: '1rem',
+                      borderRadius: '0.75rem',
+                      border: '1.5px solid #e5e7eb',
+                      backgroundColor: '#f9fafb',
+                      transition: 'all 0.2s',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = '#3b82f6';
+                      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                      e.currentTarget.style.backgroundColor = '#fff';
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = '#e5e7eb';
+                      e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                      e.currentTarget.style.backgroundColor = '#f9fafb';
+                    }}
                   />
                   <button
                     onClick={onSearch}
-                    className="btn btn-primary h-12 px-8 font-semibold min-w-[140px] glow-effect"
+                    style={{
+                      width: '100%',
+                      height: '3rem',
+                      padding: '0 2rem',
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      borderRadius: '0.75rem',
+                      border: 'none',
+                      background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: '0 8px 24px rgba(59, 130, 246, 0.3)',
+                      letterSpacing: '0.5px'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 12px 32px rgba(59, 130, 246, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.3)';
+                    }}
                   >
-                    Search
+                    🔍 Search Startups
                   </button>
-                  <Link href="/champions" className="btn btn-secondary h-12 px-8 font-semibold">
+                </div>
+                <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Link href="/champions" style={{
+                    padding: '0.75rem 1.5rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    borderRadius: '0.75rem',
+                    border: '1.5px solid #e5e7eb',
+                    backgroundColor: '#fff',
+                    color: '#3b82f6',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#3b82f6';
+                    e.currentTarget.style.backgroundColor = '#eff6ff';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#e5e7eb';
+                    e.currentTarget.style.backgroundColor = '#fff';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                  }}>
                     🏆 Champions
                   </Link>
-                  <Link href="/leaderboard" className="btn btn-secondary h-12 px-8 font-semibold">
+                  <Link href="/leaderboard" style={{
+                    padding: '0.75rem 1.5rem',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    borderRadius: '0.75rem',
+                    border: '1.5px solid #e5e7eb',
+                    backgroundColor: '#fff',
+                    color: '#3b82f6',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#3b82f6';
+                    e.currentTarget.style.backgroundColor = '#eff6ff';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#e5e7eb';
+                    e.currentTarget.style.backgroundColor = '#fff';
+                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                  }}>
                     📊 Leaderboard
                   </Link>
                 </div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center', marginTop: '1.5rem' }}>
                   <button
                     onClick={() => {
                       setSelectedIndustry('')
