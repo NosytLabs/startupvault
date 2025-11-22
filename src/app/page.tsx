@@ -31,21 +31,56 @@ export default function HomePage() {
   
   return (
     <div className="min-h-screen" suppressHydrationWarning>
-        <section id="home" className="pt-24 pb-20 bg-gradient-to-b from-secondary/30 to-background" suppressHydrationWarning>
+        <section id="home" className="pt-32 pb-24 bg-gradient-to-br from-blue-50 via-white to-purple-50" suppressHydrationWarning>
           <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
             <div className="max-w-4xl mx-auto text-center">
               <div className="mb-8">
-                <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-xs font-semibold mb-6">
+                <span style={{
+                  display: 'inline-block',
+                  padding: '0.75rem 1.5rem',
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(124, 58, 237, 0.1))',
+                  color: '#3b82f6',
+                  borderRadius: '9999px',
+                  fontSize: '0.8125rem',
+                  fontWeight: 700,
+                  marginBottom: '1.5rem',
+                  border: '1px solid rgba(59, 130, 246, 0.2)',
+                  letterSpacing: '0.5px'
+                }}>
                   ✓ AUTHENTIC Data • 50 Verified Startups • $1.1B+ Revenue
                 </span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-8 leading-tight tracking-tight">
+              <h1 style={{
+                fontSize: 'clamp(2.5rem, 8vw, 4rem)',
+                fontWeight: 900,
+                background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 50%, #2563eb 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                marginBottom: '2rem',
+                lineHeight: 1.2,
+                letterSpacing: '-1px'
+              }}>
                 {branding.subbrand}: Clone Proven Startup Models
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-3xl mx-auto">
+              <p style={{
+                fontSize: '1.25rem',
+                lineHeight: 1.6,
+                color: '#4b5563',
+                marginBottom: '1.5rem',
+                maxWidth: '48rem',
+                margin: '0 auto 1.5rem',
+              }}>
                 Discover $1.1B+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to study and clone.
               </p>
-              <p className="text-base md:text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+              <p style={{
+                fontSize: '1rem',
+                lineHeight: 1.6,
+                color: '#6b7280',
+                marginBottom: '2.5rem',
+                maxWidth: '42rem',
+                margin: '0 auto 2.5rem',
+              }}>
                 Browse 50 verified startups, scan their websites for insights, and generate actionable build documentation for your own ventures.
               </p>
               <div className="space-y-4 max-w-2xl mx-auto">

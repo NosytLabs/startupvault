@@ -17,86 +17,69 @@ export default function Navbar() {
       top: 0,
       zIndex: 50,
       width: '100%',
-      borderBottom: '1px solid #ccc',
-      backgroundColor: 'white',
-      boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+      background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
+      borderBottom: '1px solid #e5e7eb',
+      boxShadow: '0 2px 16px rgba(59, 130, 246, 0.08)'
     }}>
       <div style={{
         maxWidth: '80rem',
         margin: '0 auto',
-        padding: '0 1rem',
+        padding: '0 1.5rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         height: '4rem'
       }}>
         <Link href="/" style={{
-          fontSize: '1.125rem',
-          fontWeight: 'bold',
-          color: '#3b82f6',
+          fontSize: '1.25rem',
+          fontWeight: '900',
+          background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
           textDecoration: 'none',
           display: 'flex',
           alignItems: 'center',
-          whiteSpace: 'nowrap'
+          gap: '0.5rem',
+          whiteSpace: 'nowrap',
+          letterSpacing: '-0.5px'
         }}>
           ⭐ StartupVault
         </Link>
         
         <div style={{
           display: 'flex',
-          gap: '1rem',
+          gap: '0.5rem',
           alignItems: 'center'
         }}>
-          <Link 
-            href="/" 
-            style={{
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.375rem',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              transition: 'all 0.2s',
-              color: mounted && pathname === '/' ? '#3b82f6' : '#4b5563',
-              background: mounted && pathname === '/' ? '#eff6ff' : 'transparent',
-              border: mounted && pathname === '/' ? '1px solid #bfdbfe' : '1px solid transparent'
-            }}
-          >
-            Startups
-          </Link>
-          
-          <Link 
-            href="/compare" 
-            style={{
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.375rem',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              transition: 'all 0.2s',
-              color: mounted && pathname === '/compare' ? '#3b82f6' : '#4b5563',
-              background: mounted && pathname === '/compare' ? '#eff6ff' : 'transparent',
-              border: mounted && pathname === '/compare' ? '1px solid #bfdbfe' : '1px solid transparent'
-            }}
-          >
-            Compare
-          </Link>
-          
-          <Link 
-            href="/analytics" 
-            style={{
-              textDecoration: 'none',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.375rem',
-              fontSize: '0.875rem',
-              fontWeight: 500,
-              transition: 'all 0.2s',
-              color: mounted && pathname === '/analytics' ? '#3b82f6' : '#4b5563',
-              background: mounted && pathname === '/analytics' ? '#eff6ff' : 'transparent',
-              border: mounted && pathname === '/analytics' ? '1px solid #bfdbfe' : '1px solid transparent'
-            }}
-          >
-            Analytics
-          </Link>
+          {[
+            { href: '/', label: 'Startups' },
+            { href: '/compare', label: 'Compare' },
+            { href: '/analytics', label: 'Analytics' }
+          ].map(item => (
+            <Link 
+              key={item.href}
+              href={item.href} 
+              style={{
+                textDecoration: 'none',
+                padding: '0.625rem 1.125rem',
+                borderRadius: '0.75rem',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                color: mounted && pathname === item.href ? '#ffffff' : '#4b5563',
+                background: mounted && pathname === item.href 
+                  ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+                  : 'transparent',
+                border: 'none',
+                boxShadow: mounted && pathname === item.href 
+                  ? '0 4px 12px rgba(59, 130, 246, 0.3)'
+                  : 'none'
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
