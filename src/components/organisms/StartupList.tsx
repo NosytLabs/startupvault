@@ -54,11 +54,9 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          className="p-6 border border-border rounded-lg bg-white hover:border-primary hover:shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]"
+          className="relative p-6 border border-border rounded-lg bg-white hover:border-primary hover:shadow-xl cursor-pointer transition-all duration-300 hover:shadow-primary/20"
           style={{ animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards` }}
         >
-          {/* Gradient top border */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-t-lg opacity-0 hover:opacity-100 transition-opacity" />
 
           <div className="flex items-start justify-between mb-2">
             <div>

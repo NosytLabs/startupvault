@@ -73,17 +73,17 @@ export default function HomePage() {
 
           {/* Quick Stats */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="p-6 bg-primary/5 border border-primary/20 rounded-lg text-center">
-              <div className="text-3xl font-bold text-primary mb-2">230</div>
-              <div className="text-sm text-muted-foreground">Verified Startups</div>
+            <div className="p-8 bg-primary/5 border border-primary/20 rounded-lg text-center hover:shadow-lg transition-all">
+              <div className="text-4xl font-bold text-primary mb-2">230</div>
+              <div className="text-sm text-muted-foreground font-semibold">Verified Startups</div>
             </div>
-            <div className="p-6 bg-accent/5 border border-accent/20 rounded-lg text-center">
-              <div className="text-3xl font-bold text-accent mb-2">$2.3T+</div>
-              <div className="text-sm text-muted-foreground">Combined Revenue</div>
+            <div className="p-8 bg-accent/5 border border-accent/20 rounded-lg text-center hover:shadow-lg transition-all">
+              <div className="text-4xl font-bold text-accent mb-2">$2.3T+</div>
+              <div className="text-sm text-muted-foreground font-semibold">Combined Revenue</div>
             </div>
-            <div className="p-6 bg-secondary/5 border border-secondary/20 rounded-lg text-center">
-              <div className="text-3xl font-bold text-secondary mb-2">40+</div>
-              <div className="text-sm text-muted-foreground">Countries</div>
+            <div className="p-8 bg-secondary/5 border border-secondary/20 rounded-lg text-center hover:shadow-lg transition-all">
+              <div className="text-4xl font-bold text-secondary mb-2">40+</div>
+              <div className="text-sm text-muted-foreground font-semibold">Countries</div>
             </div>
           </div>
 

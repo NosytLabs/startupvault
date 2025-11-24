@@ -173,3 +173,24 @@
 .animate-slide-up {
   animation: slideUp 0.5s ease-out;
 }
+
+/* Smooth scrolling & performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Better button interactions */
+button, [role="button"], a {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Improved form inputs */
+input, textarea, select {
+  @apply transition-colors duration-200;
+}
+
+input:focus, textarea:focus, select:focus {
+  @apply ring-2 ring-primary/20;
+}
