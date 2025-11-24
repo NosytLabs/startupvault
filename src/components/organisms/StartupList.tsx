@@ -65,25 +65,25 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
           style={{ 
             padding: '2rem', 
             borderRadius: '1.25rem', 
-            border: '2px solid #dbeafe',
+            border: '2px solid #d4e4f0',
             backgroundColor: '#ffffff',
             cursor: 'pointer',
             transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
             display: 'block',
-            boxShadow: '0 8px 24px rgba(59, 130, 246, 0.15)',
+            boxShadow: '0 8px 24px rgba(26, 58, 82, 0.12)',
             position: 'relative',
             overflow: 'hidden',
             animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards`
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.35)';
-            e.currentTarget.style.borderColor = '#3b82f6';
-            e.currentTarget.style.backgroundColor = '#f0f7ff';
+            e.currentTarget.style.boxShadow = '0 20px 40px rgba(26, 58, 82, 0.25)';
+            e.currentTarget.style.borderColor = '#1a3a52';
+            e.currentTarget.style.backgroundColor = '#f5f9fc';
             e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.15)';
-            e.currentTarget.style.borderColor = '#dbeafe';
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(26, 58, 82, 0.12)';
+            e.currentTarget.style.borderColor = '#d4e4f0';
             e.currentTarget.style.backgroundColor = '#ffffff';
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
           }}
@@ -95,7 +95,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             left: 0,
             right: 0,
             height: '3px',
-            background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)',
+            background: 'linear-gradient(90deg, #1a3a52, #ff6b35, #7cb342)',
             opacity: 0,
             transition: 'opacity 0.3s ease-out'
           }}
@@ -107,7 +107,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
               <h3 style={{
                 fontWeight: 700,
-                color: '#0f172a',
+                color: '#1a3a52',
                 fontSize: '1.125rem',
                 lineHeight: 1.3,
                 letterSpacing: '-0.5px'
@@ -116,13 +116,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             </div>
             <p style={{
               fontSize: '0.875rem',
-              color: '#4b5563',
+              color: '#5a7089',
               marginBottom: '0.75rem',
               fontWeight: 500
-            }}>by <span style={{fontWeight: 600, color: '#3b82f6'}}>{startup.founder}</span></p>
+            }}>by <span style={{fontWeight: 600, color: '#1a3a52'}}>{startup.founder}</span></p>
             <p style={{
               fontSize: '0.9375rem',
-              color: '#4b5563',
+              color: '#5a7089',
               lineHeight: 1.6,
               maxHeight: '3rem',
               overflow: 'hidden',
@@ -138,13 +138,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
               <div style={{
                 padding: '0.75rem',
                 borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
-                border: '1px solid #93c5fd',
+                background: 'linear-gradient(135deg, #d4e4f0 0%, #c2d9e8 100%)',
+                border: '1px solid #a8c5d9',
                 textAlign: 'center'
               }}>
                 <div style={{
                   fontSize: '0.625rem',
-                  color: '#1e40af',
+                  color: '#1a3a52',
                   fontWeight: 600,
                   letterSpacing: '0.5px',
                   marginBottom: '0.25rem'
@@ -152,7 +152,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                 <div style={{
                   fontSize: '0.875rem',
                   fontWeight: 700,
-                  color: '#1e40af'
+                  color: '#1a3a52'
                 }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
               </div>
             )}
@@ -160,13 +160,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
               <div style={{
                 padding: '0.75rem',
                 borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
-                border: '1px solid #d8b4fe',
+                background: 'linear-gradient(135deg, #e8f5e9 0%, #dcedc8 100%)',
+                border: '1px solid #c5d9a8',
                 textAlign: 'center'
               }}>
                 <div style={{
                   fontSize: '0.625rem',
-                  color: '#6d28d9',
+                  color: '#558b2f',
                   fontWeight: 600,
                   letterSpacing: '0.5px',
                   marginBottom: '0.25rem'
@@ -174,7 +174,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                 <div style={{
                   fontSize: '0.875rem',
                   fontWeight: 700,
-                  color: '#6d28d9'
+                  color: '#558b2f'
                 }}>${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
               </div>
             )}
@@ -182,13 +182,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
               <div style={{
                 padding: '0.75rem',
                 borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
-                border: '1px solid #f472b6',
+                background: 'linear-gradient(135deg, #ffe4d4 0%, #ffd9c0 100%)',
+                border: '1px solid #ffb8a8',
                 textAlign: 'center'
               }}>
                 <div style={{
                   fontSize: '0.625rem',
-                  color: '#be185d',
+                  color: '#d84315',
                   fontWeight: 600,
                   letterSpacing: '0.5px',
                   marginBottom: '0.25rem'
@@ -196,7 +196,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                 <div style={{
                   fontSize: '0.75rem',
                   fontWeight: 700,
-                  color: '#be185d'
+                  color: '#d84315'
                 }}>{startup.stage}</div>
               </div>
             )}

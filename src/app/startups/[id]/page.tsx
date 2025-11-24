@@ -73,7 +73,7 @@ export default function StartupDetailPage() {
     <>
       <main style={{
         minHeight: '100vh',
-        background: 'linear-gradient(to bottom right, #eff6ff, #fff, #f5f3ff)'
+        background: 'linear-gradient(to bottom right, #f8fbf8, #fff, #f8f9fc)'
       }}>
         <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1rem' }}>
           <Link href="/startups" style={{
@@ -81,7 +81,7 @@ export default function StartupDetailPage() {
             alignItems: 'center',
             gap: '0.5rem',
             marginBottom: '2rem',
-            color: '#3b82f6',
+            color: '#1a3a52',
             textDecoration: 'none',
             fontWeight: 600,
             cursor: 'pointer'
@@ -91,22 +91,22 @@ export default function StartupDetailPage() {
 
           {/* Hero Card */}
           <div style={{
-            background: 'linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%)',
+            background: 'linear-gradient(135deg, #f5f9fc 0%, #f8f9fc 100%)',
             borderRadius: '1.25rem',
-            border: '1px solid #dbeafe',
+            border: '1px solid #d4e4f0',
             padding: '2.5rem',
             marginBottom: '2rem',
-            boxShadow: '0 8px 32px rgba(59, 130, 246, 0.1)'
+            boxShadow: '0 8px 32px rgba(26, 58, 82, 0.08)'
           }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
               <div>
-                <div style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.875rem', color: '#7a8ba0', marginBottom: '0.5rem', fontWeight: 600 }}>
                   Rank #{startup.ranking}
                 </div>
                 <h1 style={{
                   fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                   fontWeight: 900,
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
+                  background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%)',
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
@@ -114,7 +114,7 @@ export default function StartupDetailPage() {
                 }}>
                   {startup.name}
                 </h1>
-                <p style={{ fontSize: '1.125rem', color: '#4b5563', fontWeight: 500 }}>by {startup.founder}</p>
+                <p style={{ fontSize: '1.125rem', color: '#5a7089', fontWeight: 500 }}>by {startup.founder}</p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 {startup.isChampion && <div style={{ fontSize: '3rem' }}>🏆</div>}
@@ -135,58 +135,58 @@ export default function StartupDetailPage() {
                 </button>
               </div>
             </div>
-            <p style={{ fontSize: '1.125rem', color: '#4b5563', lineHeight: 1.6 }}>{startup.description}</p>
+            <p style={{ fontSize: '1.125rem', color: '#5a7089', lineHeight: 1.6 }}>{startup.description}</p>
           </div>
 
           {/* Key Metrics */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
             <div style={{
-              background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+              background: 'linear-gradient(135deg, #d4e4f0 0%, #c2d9e8 100%)',
               borderRadius: '1rem',
               padding: '1.5rem',
-              border: '1px solid #93c5fd'
+              border: '1px solid #a8c5d9'
             }}>
-              <div style={{ fontSize: '0.875rem', color: '#1e40af', fontWeight: 600, marginBottom: '0.5rem' }}>Revenue</div>
-              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#1e40af' }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
+              <div style={{ fontSize: '0.875rem', color: '#1a3a52', fontWeight: 600, marginBottom: '0.5rem' }}>Revenue</div>
+              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#1a3a52' }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
             </div>
             {startup.mrr > 0 && (
             <div style={{
-              background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
+              background: 'linear-gradient(135deg, #e8f5e9 0%, #dcedc8 100%)',
               borderRadius: '1rem',
               padding: '1.5rem',
-              border: '1px solid #d8b4fe'
+              border: '1px solid #c5d9a8'
             }}>
-              <div style={{ fontSize: '0.875rem', color: '#6d28d9', fontWeight: 600, marginBottom: '0.5rem' }}>MRR</div>
-              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#6d28d9' }}>${(startup.mrr / 1000000).toFixed(2)}M</div>
+              <div style={{ fontSize: '0.875rem', color: '#558b2f', fontWeight: 600, marginBottom: '0.5rem' }}>MRR</div>
+              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#558b2f' }}>${(startup.mrr / 1000000).toFixed(2)}M</div>
             </div>
             )}
             <div style={{
-              background: 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
+              background: 'linear-gradient(135deg, #ffe4d4 0%, #ffd9c0 100%)',
               borderRadius: '1rem',
               padding: '1.5rem',
-              border: '1px solid #f472b6'
+              border: '1px solid #ffb8a8'
             }}>
-              <div style={{ fontSize: '0.875rem', color: '#be185d', fontWeight: 600, marginBottom: '0.5rem' }}>Stage</div>
-              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#be185d' }}>{startup.stage}</div>
+              <div style={{ fontSize: '0.875rem', color: '#d84315', fontWeight: 600, marginBottom: '0.5rem' }}>Stage</div>
+              <div style={{ fontSize: '2rem', fontWeight: 900, color: '#d84315' }}>{startup.stage}</div>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(124, 58, 237, 0.05) 100%)',
+            background: 'linear-gradient(135deg, rgba(26, 58, 82, 0.04) 0%, rgba(255, 107, 53, 0.04) 100%)',
             borderRadius: '1.25rem',
-            border: '2px solid #dbeafe',
+            border: '2px solid #d4e4f0',
             padding: '2rem',
             marginBottom: '2rem'
           }}>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem', color: '#0f172a' }}>Generate Build Documentation</h3>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem', color: '#1a3a52' }}>Generate Build Documentation</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
               <button
                 onClick={() => downloadDoc('prd')}
                 disabled={downloading !== null}
                 style={{
                   padding: '1rem 1.5rem',
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                  background: 'linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%)',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '0.75rem',

@@ -24,15 +24,15 @@ export default function Navbar() {
       zIndex: 50,
       width: '100%',
       background: scrolled 
-        ? 'rgba(255, 255, 255, 0.9)' 
-        : 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
-      backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        ? 'rgba(255, 255, 255, 0.92)' 
+        : 'linear-gradient(135deg, #ffffff 0%, #f8fbf8 100%)',
+      backdropFilter: scrolled ? 'blur(12px)' : 'none',
       borderBottom: scrolled 
-        ? '1px solid rgba(229, 231, 235, 0.5)' 
-        : '1px solid #e5e7eb',
+        ? '1px solid rgba(197, 204, 211, 0.4)' 
+        : '1px solid #e5edf2',
       boxShadow: scrolled 
-        ? '0 4px 20px rgba(59, 130, 246, 0.12)' 
-        : '0 2px 16px rgba(59, 130, 246, 0.08)',
+        ? '0 4px 20px rgba(26, 58, 82, 0.1)' 
+        : '0 2px 16px rgba(26, 58, 82, 0.06)',
       transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
     }}>
       <div style={{
@@ -47,7 +47,7 @@ export default function Navbar() {
         <Link href="/" style={{
           fontSize: '1.25rem',
           fontWeight: '900',
-          background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 100%)',
+          background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%)',
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
@@ -86,19 +86,19 @@ export default function Navbar() {
                 fontSize: '0.875rem',
                 fontWeight: 600,
                 transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                color: mounted && pathname === item.href ? '#ffffff' : '#4b5563',
+                color: mounted && pathname === item.href ? '#ffffff' : '#4a5f74',
                 background: mounted && pathname === item.href 
-                  ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+                  ? 'linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%)'
                   : 'transparent',
                 border: 'none',
                 boxShadow: mounted && pathname === item.href 
-                  ? '0 4px 12px rgba(59, 130, 246, 0.3)'
+                  ? '0 4px 12px rgba(26, 58, 82, 0.3)'
                   : 'none',
                 animation: mounted ? `slideInRight 0.4s ease-out ${idx * 0.1}s backwards` : 'none'
               }}
               onMouseEnter={e => {
                 if (mounted && pathname !== item.href) {
-                  e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                  e.currentTarget.style.backgroundColor = 'rgba(26, 58, 82, 0.08)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }
               }}

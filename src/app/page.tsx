@@ -31,20 +31,20 @@ export default function HomePage() {
   
   return (
     <div className="min-h-screen" suppressHydrationWarning>
-      <section id="home" className="pt-32 pb-24 bg-gradient-to-br from-blue-50 via-white to-purple-50" suppressHydrationWarning>
+      <section id="home" className="pt-32 pb-24" style={{ background: 'linear-gradient(to bottom right, #f8fbf8 0%, #ffffff 50%, #f8f9fc 100%)' }} suppressHydrationWarning>
         <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
               <span style={{
                 display: 'inline-block',
                 padding: '0.75rem 1.5rem',
-                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(124, 58, 237, 0.1))',
-                color: '#3b82f6',
+                background: 'linear-gradient(135deg, rgba(26, 58, 82, 0.08), rgba(255, 107, 53, 0.08))',
+                color: '#1a3a52',
                 borderRadius: '9999px',
                 fontSize: '0.8125rem',
                 fontWeight: 700,
                 marginBottom: '1.5rem',
-                border: '1px solid rgba(59, 130, 246, 0.2)',
+                border: '1px solid rgba(26, 58, 82, 0.15)',
                 letterSpacing: '0.5px'
               }}>
                 ✓ AUTHENTIC Data • 50 Verified Startups • $1.1B+ Revenue
@@ -53,7 +53,7 @@ export default function HomePage() {
             <h1 style={{
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               fontWeight: 900,
-              background: 'linear-gradient(135deg, #3b82f6 0%, #7c3aed 50%, #2563eb 100%)',
+              background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 50%, #7cb342 100%)',
               backgroundClip: 'text',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
@@ -66,7 +66,7 @@ export default function HomePage() {
             <p style={{
               fontSize: '1.25rem',
               lineHeight: 1.6,
-              color: '#4b5563',
+              color: '#5a7089',
               marginBottom: '1.5rem',
               maxWidth: '48rem',
               margin: '0 auto 1.5rem',
@@ -76,7 +76,7 @@ export default function HomePage() {
             <p style={{
               fontSize: '1rem',
               lineHeight: 1.6,
-              color: '#6b7280',
+              color: '#7a8ba0',
               marginBottom: '2.5rem',
               maxWidth: '42rem',
               margin: '0 auto 2.5rem',
@@ -103,12 +103,12 @@ export default function HomePage() {
                     fontFamily: 'inherit'
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = '#3b82f6';
-                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+                    e.currentTarget.style.borderColor = '#1a3a52';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(26, 58, 82, 0.1)';
                     e.currentTarget.style.backgroundColor = '#fff';
                   }}
                   onBlur={(e) => {
-                    e.currentTarget.style.borderColor = '#e5e7eb';
+                    e.currentTarget.style.borderColor = '#e5edf2';
                     e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
                     e.currentTarget.style.backgroundColor = '#f9fafb';
                   }}
@@ -123,21 +123,21 @@ export default function HomePage() {
                     fontWeight: 700,
                     borderRadius: '0.75rem',
                     border: 'none',
-                    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                    background: 'linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%)',
                     color: '#fff',
                     cursor: 'pointer',
                     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: '0 8px 24px rgba(59, 130, 246, 0.3)',
+                    boxShadow: '0 8px 24px rgba(26, 58, 82, 0.3)',
                     letterSpacing: '0.5px',
                     fontFamily: 'inherit'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(59, 130, 246, 0.4)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(26, 58, 82, 0.4)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.3)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(26, 58, 82, 0.3)';
                   }}
                 >
                   🔍 Search Startups

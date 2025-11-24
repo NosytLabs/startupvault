@@ -4,59 +4,59 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 3%;
+    --background: 248 6% 97%;
+    --foreground: 210 14% 18%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3%;
+    --card-foreground: 210 14% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3%;
-    --primary: 218 100% 50%;
+    --popover-foreground: 210 14% 18%;
+    --primary: 200 40% 35%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 270 70% 50%;
+    --secondary: 85 51% 50%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 83%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 280 85% 55%;
+    --muted: 210 10% 85%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 11 89% 52%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 92%;
-    --input: 0 0% 96%;
-    --ring: 218 100% 50%;
+    --border: 210 10% 90%;
+    --input: 210 8% 95%;
+    --ring: 200 40% 35%;
     --radius: 0.75rem;
-    --success: 142 76% 36%;
+    --success: 85 51% 50%;
     --success-foreground: 0 0% 100%;
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
-    --info: 201 96% 45%;
+    --info: 200 40% 35%;
     --info-foreground: 0 0% 100%;
   }
 
   .dark {
-    --background: 0 0% 10%;
+    --background: 210 14% 15%;
     --foreground: 0 0% 95%;
-    --card: 0 0% 15%;
+    --card: 210 14% 22%;
     --card-foreground: 0 0% 95%;
-    --popover: 0 0% 12%;
+    --popover: 210 14% 20%;
     --popover-foreground: 0 0% 95%;
-    --primary: 240 84% 61%;
+    --primary: 200 60% 60%;
     --primary-foreground: 0 0% 10%;
-    --secondary: 0 0% 25%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 35%;
-    --muted-foreground: 0 0% 70%;
-    --accent: 240 84% 61%;
+    --secondary: 85 51% 60%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 210 10% 35%;
+    --muted-foreground: 210 10% 70%;
+    --accent: 11 89% 60%;
     --accent-foreground: 0 0% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 25%;
-    --input: 0 0% 20%;
-    --ring: 240 84% 61%;
-    --success: 142 70% 45%;
+    --border: 210 10% 25%;
+    --input: 210 10% 20%;
+    --ring: 200 60% 60%;
+    --success: 85 51% 60%;
     --success-foreground: 0 0% 10%;
     --warning: 45 90% 51%;
     --warning-foreground: 0 0% 10%;
-    --info: 201 95% 47%;
+    --info: 200 60% 60%;
     --info-foreground: 0 0% 10%;
   }
 }

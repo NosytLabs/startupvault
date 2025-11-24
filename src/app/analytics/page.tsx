@@ -34,29 +34,37 @@ export default function AnalyticsPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-background to-purple-50/50">
+      <div style={{ background: 'linear-gradient(to bottom right, #f8fbf8 0%, #ffffff 50%, #f8f9fc 100%)' }} className="min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-16 animate-fade-in">
-            <h1 className="text-5xl font-bold mb-6 text-blue-600">Startup Market Analytics</h1>
+            <h1 style={{
+              fontSize: 'clamp(2rem, 6vw, 3rem)',
+              fontWeight: 900,
+              background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              marginBottom: '1.5rem'
+            }}>Startup Market Analytics</h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">Discover trends across <span className="font-bold text-primary">50 verified startups</span> with $1.1B+ combined revenue</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 mb-12">
-            <div className="p-8 bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 rounded-lg hover:shadow-lg transition-all">
+            <div className="p-8 bg-gradient-to-br from-teal-500/10 to-teal-600/10 border border-teal-500/20 rounded-lg hover:shadow-lg transition-all">
               <p className="text-sm text-muted-foreground mb-2 font-semibold">Total Startups</p>
-              <p className="text-4xl font-bold text-blue-600">{overview?.totalStartups}</p>
+              <p className="text-4xl font-bold" style={{color: '#1a3a52'}}>{overview?.totalStartups}</p>
             </div>
-            <div className="p-8 bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 rounded-lg hover:shadow-lg transition-all">
+            <div className="p-8 bg-gradient-to-br from-cyan-500/10 to-cyan-600/10 border border-cyan-500/20 rounded-lg hover:shadow-lg transition-all">
               <p className="text-sm text-muted-foreground mb-2 font-semibold">Combined Revenue</p>
-              <p className="text-3xl font-bold text-purple-600">${(overview?.totalRevenue / 1000000000).toFixed(1)}B</p>
+              <p className="text-3xl font-bold" style={{color: '#0d47a1'}}>${(overview?.totalRevenue / 1000000000).toFixed(1)}B</p>
             </div>
-            <div className="p-8 bg-gradient-to-br from-pink-500/10 to-pink-600/10 border border-pink-500/20 rounded-lg hover:shadow-lg transition-all">
+            <div className="p-8 bg-gradient-to-br from-green-500/10 to-green-600/10 border border-green-500/20 rounded-lg hover:shadow-lg transition-all">
               <p className="text-sm text-muted-foreground mb-2 font-semibold">Combined MRR</p>
-              <p className="text-3xl font-bold text-pink-600">${(overview?.totalMrr / 1000000).toFixed(1)}M</p>
+              <p className="text-3xl font-bold" style={{color: '#558b2f'}}>${(overview?.totalMrr / 1000000).toFixed(1)}M</p>
             </div>
             <div className="p-8 bg-gradient-to-br from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-lg hover:shadow-lg transition-all">
               <p className="text-sm text-muted-foreground mb-2 font-semibold">Average Revenue/Company</p>
-              <p className="text-3xl font-bold text-orange-600">${(overview?.avgRevenue / 1000000).toFixed(1)}M</p>
+              <p className="text-3xl font-bold" style={{color: '#d84315'}}>${(overview?.avgRevenue / 1000000).toFixed(1)}M</p>
             </div>
           </div>
 
