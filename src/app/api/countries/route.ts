@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { realTrustMRRData } from '@/lib/trustmrr-data';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const countries = [...new Set(realTrustMRRData.map(s => s.country))]

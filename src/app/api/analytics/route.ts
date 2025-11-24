@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 const startupData = [
   {"name": "Gumroad", "description": "Go from 0 to $1", "revenue": 878595861, "mrr": 0, "founder": "shl", "industry": "Digital Products", "stage": "Scale"},
   {"name": "easytools sp. z o.o.", "description": "Tools that help creators sell and advertise", "revenue": 0, "mrr": 82107087, "founder": "easytools", "industry": "SaaS", "stage": "Growth"},
