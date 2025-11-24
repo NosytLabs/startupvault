@@ -33,7 +33,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen" suppressHydrationWarning>
       {/* Hero Section */}
-      <section className="pt-24 pb-20 bg-white">
+      <section className="pt-24 pb-20 bg-gradient-to-b from-white via-blue-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block mb-6 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
@@ -100,7 +100,7 @@ export default function HomePage() {
       </section>
 
       {/* Trending Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-gradient-to-b from-white to-slate-50/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-3xl font-bold mb-2">Trending Startups</h2>
@@ -115,7 +115,7 @@ export default function HomePage() {
       </section>
 
       {/* High MRR Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-slate-50/80 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-3xl font-bold mb-2">Highest MRR</h2>
@@ -144,7 +144,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-gradient-to-b from-white via-slate-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">Loved by Entrepreneurs</h2>
