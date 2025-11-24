@@ -54,8 +54,8 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   return (
     <div style={{ 
       display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', 
-      gap: '2rem', 
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+      gap: '1.5rem', 
       width: '100%' 
     }}>
       {startups.map((startup, idx) => (
@@ -133,8 +133,8 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             }}>{startup.description}</p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))', gap: '0.5rem' }}>
-            {startup.revenue && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: '0.5rem' }}>
+            {startup.revenue && startup.revenue > 0 && (
               <div style={{
                 padding: '0.75rem',
                 borderRadius: '0.5rem',
@@ -150,13 +150,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                   marginBottom: '0.25rem'
                 }}>REVENUE</div>
                 <div style={{
-                  fontSize: '0.9375rem',
+                  fontSize: '0.875rem',
                   fontWeight: 700,
                   color: '#1e40af'
                 }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
               </div>
             )}
-            {startup.mrr && (
+            {startup.mrr && startup.mrr > 0 && (
               <div style={{
                 padding: '0.75rem',
                 borderRadius: '0.5rem',
@@ -172,7 +172,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                   marginBottom: '0.25rem'
                 }}>MRR</div>
                 <div style={{
-                  fontSize: '0.9375rem',
+                  fontSize: '0.875rem',
                   fontWeight: 700,
                   color: '#6d28d9'
                 }}>${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>

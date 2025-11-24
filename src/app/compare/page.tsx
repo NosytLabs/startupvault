@@ -17,11 +17,16 @@ export default function ComparePage() {
 
   return (
     <>
-      <div className="min-h-screen bg-background">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="mb-12">
-            <h1 className="text-5xl font-bold mb-3">Compare Startups</h1>
-            <p className="text-lg text-muted-foreground">Select multiple verified startups to analyze side-by-side and learn from their business models</p>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-background to-purple-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-16 animate-fade-in">
+            <h1 suppressHydrationWarning className="text-5xl font-bold mb-3" style={{
+              background: 'linear-gradient(to right, #2563eb, #7c3aed)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>Compare Startups</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">Select multiple verified startups to analyze <span className="font-bold text-primary">side-by-side</span> and learn from their business models</p>
           </div>
 
           <div className="grid lg:grid-cols-4 gap-6 mb-12">
