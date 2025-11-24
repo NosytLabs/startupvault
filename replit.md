@@ -1,7 +1,7 @@
 # StartupVault - Production Ready Platform
 
 ### Overview
-StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 80 verified startups with real founder identities and metrics, totaling over $65 billion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX and a professional design system.
+StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 105 verified startups with real founder identities and metrics, totaling over $150 billion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX and a professional design system.
 
 ### User Preferences
 - I prefer clear, concise, and simple language.
@@ -15,7 +15,7 @@ The application is built using Next.js 14 and React 18, with Tailwind CSS v3 for
 
 **Core Features:**
 -   **Homepage:** Displays trending startups, high MRR companies, pricing, and testimonials.
--   **Startups Database:** A browsable list of all 80 verified startups in a responsive 3-column grid.
+-   **Startups Database:** A browsable list of all 105 verified startups in a responsive 3-column grid.
 -   **Startup Detail:** Individual pages for each startup, showing metrics and related companies.
 -   **Compare Tool:** Allows side-by-side analysis of up to 5 startups.
 -   **Leaderboard:** Global rankings by revenue/MRR with country filtering.

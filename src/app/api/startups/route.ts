@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { completeTrustMRRStartups } from '@/lib/trustmrr-complete-data';
+import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
 export const dynamic = 'force-dynamic';
 
@@ -7,12 +7,12 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const sort = searchParams.get('sort') || 'ranking';
-    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 100);
+    const limit = Math.min(parseInt(searchParams.get('limit') || '10'), 200);
     const search = searchParams.get('search');
     const industry = searchParams.get('industry');
     const country = searchParams.get('country');
 
-    let results = [...completeTrustMRRStartups];
+    let results = [...allTrustMRRStartups];
 
     if (search) {
       const term = search.toLowerCase();
