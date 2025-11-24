@@ -37,13 +37,8 @@ export default function AnalyticsPage() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-background to-purple-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-16 animate-fade-in">
-            <h1 suppressHydrationWarning className="text-5xl font-bold mb-6" style={{
-              background: 'linear-gradient(to right, #2563eb, #7c3aed)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}>Startup Market Analytics</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">Discover trends across <span className="font-bold text-primary">50 verified startups</span> with $1.1B+ combined revenue</p>
+            <h1 className="text-5xl font-bold mb-6 text-blue-600">Startup Market Analytics</h1>
+            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">Discover trends across <span className="font-bold text-primary">50 verified startups</span> with $1.1B+ combined revenue</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6 mb-12">

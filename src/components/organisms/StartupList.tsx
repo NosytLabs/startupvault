@@ -65,26 +65,26 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
           style={{ 
             padding: '2rem', 
             borderRadius: '1.25rem', 
-            border: '1px solid #e5e7eb',
-            backgroundColor: '#fff',
+            border: '2px solid #dbeafe',
+            backgroundColor: '#ffffff',
             cursor: 'pointer',
             transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
             display: 'block',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
+            boxShadow: '0 8px 24px rgba(59, 130, 246, 0.15)',
             position: 'relative',
             overflow: 'hidden',
             animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards`
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0 24px 48px rgba(59, 130, 246, 0.25)';
+            e.currentTarget.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.35)';
             e.currentTarget.style.borderColor = '#3b82f6';
-            e.currentTarget.style.backgroundColor = '#f8f9ff';
-            e.currentTarget.style.transform = 'translateY(-12px) scale(1.02)';
+            e.currentTarget.style.backgroundColor = '#f0f7ff';
+            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.06)';
-            e.currentTarget.style.borderColor = '#e5e7eb';
-            e.currentTarget.style.backgroundColor = '#fff';
+            e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.15)';
+            e.currentTarget.style.borderColor = '#dbeafe';
+            e.currentTarget.style.backgroundColor = '#ffffff';
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
           }}
         >
@@ -116,7 +116,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             </div>
             <p style={{
               fontSize: '0.875rem',
-              color: '#6b7280',
+              color: '#4b5563',
               marginBottom: '0.75rem',
               fontWeight: 500
             }}>by <span style={{fontWeight: 600, color: '#3b82f6'}}>{startup.founder}</span></p>

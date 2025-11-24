@@ -149,6 +149,7 @@ export default function StartupDetailPage() {
               <div style={{ fontSize: '0.875rem', color: '#1e40af', fontWeight: 600, marginBottom: '0.5rem' }}>Revenue</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: '#1e40af' }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
             </div>
+            {startup.mrr > 0 && (
             <div style={{
               background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
               borderRadius: '1rem',
@@ -158,6 +159,7 @@ export default function StartupDetailPage() {
               <div style={{ fontSize: '0.875rem', color: '#6d28d9', fontWeight: 600, marginBottom: '0.5rem' }}>MRR</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: '#6d28d9' }}>${(startup.mrr / 1000000).toFixed(2)}M</div>
             </div>
+            )}
             <div style={{
               background: 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
               borderRadius: '1rem',
