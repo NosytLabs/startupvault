@@ -1,4 +1,5 @@
 'use client';
+
 import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Footer } from '@/components/layout/footer';

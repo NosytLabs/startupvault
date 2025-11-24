@@ -1,5 +1,6 @@
 'use client';
-import dynamic from 'next/dynamic';
+
+import dynamicImport from 'next/dynamic';
 import Link from 'next/link';
 import { Features } from '@/components/features';
 import { Footer } from '@/components/layout/footer';
@@ -9,8 +10,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { branding } from '@/config'
 
-const Pricing = dynamic(() => import('@/components/layout/pricing').then(m => m.Pricing), { ssr: false });
-const Testimonials = dynamic(() => import('@/components/layout/testimonials').then(m => m.Testimonials), { ssr: false });
+const Pricing = dynamicImport(() => import('@/components/layout/pricing').then(m => m.Pricing), { ssr: false });
+const Testimonials = dynamicImport(() => import('@/components/layout/testimonials').then(m => m.Testimonials), { ssr: false });
 
 export default function HomePage() {
   const router = useRouter()
