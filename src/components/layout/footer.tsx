@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Brand Column */}
           <div className="flex flex-col gap-3">
-            <div className="text-lg font-bold gradient-text-primary">
+            <div className="text-lg font-bold text-primary">
               ⭐ StartupVault
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
