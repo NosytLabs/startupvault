@@ -163,13 +163,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .logo-text {
-    background: linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
   .stat-card {
     @apply p-8 bg-gradient-to-br border rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
   }

@@ -14,16 +14,16 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border shadow-sm" suppressHydrationWarning>
+    <nav suppressHydrationWarning className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <Link 
           href="/" 
-          className="logo-text font-bold flex items-center gap-2 hover:opacity-90 transition-opacity duration-200 text-lg md:text-xl whitespace-nowrap flex-shrink-0"
+          className="font-bold flex items-center gap-2 hover:opacity-90 transition-opacity duration-200 text-lg md:text-xl whitespace-nowrap flex-shrink-0 text-primary"
         >
           ⭐ StartupVault
         </Link>
         
-        <div className="flex gap-1 md:gap-2 items-center flex-shrink-0">
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexShrink: 0 }} className="md:gap-2">
           {navItems.map((item) => (
             <Link 
               key={item.href}
