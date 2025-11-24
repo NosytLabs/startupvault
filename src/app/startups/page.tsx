@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
@@ -22,20 +22,14 @@ function StartupsContent() {
 
   return (
     <>
-      <div style={{ background: 'linear-gradient(to bottom right, #f8fbf8 0%, #ffffff 50%, #f8f9fc 100%)' }} className="min-h-screen">
+      <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="mb-16 animate-fade-in">
-            <h1 style={{
-              fontSize: 'clamp(2rem, 6vw, 3rem)',
-              fontWeight: 900,
-              background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              marginBottom: '1rem'
-            }}>Verified Startup Database</h1>
-            <p className="text-xl text-slate-600 leading-relaxed max-w-2xl">
-              Explore <span className="font-bold text-primary text-2xl">{data.startups.length}</span> verified startups with <span className="font-bold text-primary">real revenue data</span> from TrustMRR.com
+          <div className="mb-12 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text-primary">
+              Verified Startup Database
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              Explore <span className="font-bold text-primary">{data.startups.length}</span> verified startups with <span className="font-bold text-primary">real revenue data</span> from TrustMRR.com
             </p>
           </div>
 

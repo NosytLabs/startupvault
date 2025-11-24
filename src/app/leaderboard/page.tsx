@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
+import { Footer } from '@/components/layout/footer';
 
 export default function LeaderboardPage() {
   const router = useRouter();
@@ -26,103 +27,86 @@ export default function LeaderboardPage() {
     : sorted;
 
   return (
-    <div className="min-h-screen">
-      <main className="bg-gradient-to-br from-secondary/10 via-background to-secondary/5">
-        <div className="container max-w-6xl mx-auto px-4 py-16">
-          <div className="mb-16 animate-fade-in" suppressHydrationWarning>
-            <h1 className="text-5xl md:text-6xl font-bold mb-3 text-foreground">TrustMRR Global Leaderboard</h1>
-            <p className="text-xl text-muted-foreground leading-relaxed" suppressHydrationWarning>
+    <>
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="mb-12 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text-primary">
+              TrustMRR Global Leaderboard
+            </h1>
+            <p className="text-lg text-muted-foreground">
               <span className="font-semibold text-primary">{sorted.length}</span> verified startups ranked by performance
             </p>
           </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16" suppressHydrationWarning>
-          <div className="p-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-blue-600 mb-2">{sorted.length}</div>
-            <div className="text-sm text-muted-foreground">Total Verified Startups</div>
-          </div>
-          <div className="p-8 rounded-lg bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-purple-600 mb-2">🌍 {countries.length}</div>
-            <div className="text-sm text-muted-foreground">Countries Represented</div>
-          </div>
-          <div className="p-8 rounded-lg bg-gradient-to-br from-pink-500/10 to-pink-600/10 border border-pink-500/20 hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-pink-600 mb-2">${(sorted.reduce((sum, s) => sum + s.revenue, 0) / 1000000000).toFixed(1)}B</div>
-            <div className="text-sm text-muted-foreground">Combined Revenue</div>
-          </div>
-        </div>
-
-        {/* Filter by Country */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">🌍 Filter by Country</h2>
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => setSelectedCountry('')}
-              className={`px-4 py-2.5 rounded-lg border font-semibold transition-all duration-300 ${!selectedCountry ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/30 scale-105' : 'border-border hover:border-primary/50'}`}
-            >
-              All Countries
-            </button>
-            {countries.map(country => (
-              <button
-                key={country.country}
-                onClick={() => setSelectedCountry(country.country)}
-                className={`px-4 py-2.5 rounded-lg border font-semibold transition-all duration-300 ${selectedCountry === country.country ? 'bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/30 scale-105' : 'border-border hover:border-primary/50'}`}
-              >
-                {country.country} ({country.count})
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Full Leaderboard */}
-        <div>
-          <h2 className="text-3xl font-bold mb-6">📊 Full Leaderboard {selectedCountry && `- ${selectedCountry}`}</h2>
-          <div className="space-y-2">
-            <div className="overflow-x-auto bg-card rounded-lg border">
-              <table className="w-full text-sm">
-                <thead className="border-b bg-secondary/50">
-                  <tr>
-                    <th className="px-4 py-3 text-left font-semibold">Rank</th>
-                    <th className="px-4 py-3 text-left font-semibold">Startup</th>
-                    <th className="px-4 py-3 text-left font-semibold">Founder</th>
-                    <th className="px-4 py-3 text-left font-semibold">Country</th>
-                    <th className="px-4 py-3 text-right font-semibold">Revenue/MRR</th>
-                    <th className="px-4 py-3 text-left font-semibold">Stage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filtered.map((startup, idx) => (
-                    <tr
-                      key={startup.id}
-                      className="border-b hover:bg-secondary/50 cursor-pointer transition"
-                      onClick={() => router.push(`/startups/${startup.id}`)}
-                    >
-                      <td className="px-4 py-3 font-semibold text-primary">{startup.ranking}</td>
-                      <td className="px-4 py-3">
-                        <div className="font-semibold flex items-center gap-2">
-                          {startup.isChampion && <span>🏆</span>}
-                          {startup.name}
-                        </div>
-                        <div className="text-xs text-muted-foreground">{startup.industry}</div>
-                      </td>
-                      <td className="px-4 py-3 text-sm">{startup.founder}</td>
-                      <td className="px-4 py-3 text-sm">{startup.country}</td>
-                      <td className="px-4 py-3 text-right font-semibold">
-                        ${(Math.max(startup.mrr || 0, startup.revenue || 0) / 1000000).toFixed(1)}M
-                      </td>
-                      <td className="px-4 py-3">
-                        <span className="px-2 py-1 rounded-full text-xs bg-primary/20 text-primary font-medium">
-                          {startup.stage}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          {/* Stats Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="p-8 bg-primary/5 border border-primary/20 rounded-lg">
+              <div className="text-4xl font-bold text-primary mb-2">{sorted.length}</div>
+              <div className="text-sm text-muted-foreground">Total Verified Startups</div>
+            </div>
+            <div className="p-8 bg-accent/5 border border-accent/20 rounded-lg">
+              <div className="text-4xl font-bold text-accent mb-2">🌍 {countries.length}</div>
+              <div className="text-sm text-muted-foreground">Countries Represented</div>
+            </div>
+            <div className="p-8 bg-secondary/5 border border-secondary/20 rounded-lg">
+              <div className="text-4xl font-bold text-secondary mb-2">${(sorted.reduce((sum, s) => sum + s.revenue, 0) / 1000000000).toFixed(1)}B</div>
+              <div className="text-sm text-muted-foreground">Combined Revenue</div>
             </div>
           </div>
+
+          {/* Country Filter */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold mb-6">🌍 Filter by Country</h2>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCountry('')}
+                className={`px-4 py-2 rounded-lg font-semibold transition-all ${!selectedCountry ? 'btn btn-primary' : 'border border-border hover:border-primary/50'}`}
+              >
+                All Countries
+              </button>
+              {countries.map(country => (
+                <button
+                  key={country.country}
+                  onClick={() => setSelectedCountry(country.country)}
+                  className={`px-4 py-2 rounded-lg font-semibold transition-all ${selectedCountry === country.country ? 'btn btn-primary' : 'border border-border hover:border-primary/50'}`}
+                >
+                  {country.country} ({country.count})
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Leaderboard Table */}
+          <div className="bg-white border border-border rounded-lg overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-muted/50 border-b border-border">
+                <tr>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Rank</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Startup</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Founder</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Country</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Revenue/MRR</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground">Stage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((startup) => (
+                  <tr key={startup.id} className="border-b border-border hover:bg-muted/30 transition-colors cursor-pointer" onClick={() => router.push(`/startups/${startup.id}`)}>
+                    <td className="px-6 py-4 text-sm font-semibold text-primary">{startup.ranking}</td>
+                    <td className="px-6 py-4 text-sm font-semibold text-foreground">{startup.name}</td>
+                    <td className="px-6 py-4 text-sm text-muted-foreground">@{startup.founder}</td>
+                    <td className="px-6 py-4 text-sm text-muted-foreground">{startup.country}</td>
+                    <td className="px-6 py-4 text-sm font-semibold text-accent">${startup.revenue ? (startup.revenue / 1000000).toFixed(1) : (startup.mrr / 1000).toFixed(1)}M</td>
+                    <td className="px-6 py-4 text-sm"><span className="px-2 py-1 bg-secondary/10 text-secondary rounded-full">{startup.stage}</span></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-        </div>
-      </main>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }

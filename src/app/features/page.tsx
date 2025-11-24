@@ -48,16 +48,16 @@ export default function FeaturesPage() {
 
   return (
     <>
-      <div className="min-h-screen bg-background">
-        <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Powerful Features</h1>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text-primary">Powerful Features</h1>
             <p className="text-xl text-muted-foreground">Everything you need to discover and clone proven startup business models</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {features.map((feature, i) => (
-              <div key={i} className="group p-8 bg-card border border-border rounded-lg hover:border-primary/50 hover:shadow-lg transition-all">
+              <div key={i} className="group p-8 bg-slate-50 border border-border rounded-lg hover:border-primary hover:shadow-lg transition-all">
                 <p className="text-5xl mb-4">{feature.icon}</p>
                 <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>

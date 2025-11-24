@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Footer } from '@/components/layout/footer';
 import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
@@ -13,39 +13,34 @@ export default function ComparePage() {
 
   const totalRevenue = selectedData.reduce((sum, s) => sum + s.revenue, 0);
   const totalMRR = selectedData.reduce((sum, s) => sum + s.mrr, 0);
-  const avgRevenue = selectedData.length ? totalRevenue / selectedData.length : 0;
 
   return (
     <>
-      <div style={{ background: 'linear-gradient(to bottom right, #f8fbf8 0%, #ffffff 50%, #f8f9fc 100%)' }} className="min-h-screen">
+      <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="mb-16 animate-fade-in">
-            <h1 style={{
-              fontSize: 'clamp(2rem, 6vw, 3rem)',
-              fontWeight: 900,
-              background: 'linear-gradient(135deg, #1a3a52 0%, #ff6b35 100%)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              marginBottom: '0.75rem'
-            }}>Compare Startups</h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">Select multiple verified startups to analyze <span className="font-bold text-primary">side-by-side</span> and learn from their business models</p>
+          <div className="mb-12 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text-primary">
+              Compare Startups
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              Select multiple verified startups to analyze <span className="font-bold text-primary">side-by-side</span> and learn from their business models
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-4 gap-6 mb-12">
             <div className="lg:col-span-3">
-              <label className="block text-sm font-semibold mb-3">Search & Select Startups</label>
+              <label className="block text-sm font-semibold mb-3">Search & Select Startups (Max 5)</label>
               <input
                 type="text"
                 placeholder="Search startups..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="input w-full mb-3"
+                className="w-full h-12 px-4 border border-border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-primary mb-3"
               />
-              <div className="bg-card border rounded-lg p-4 max-h-96 overflow-y-auto">
+              <div className="bg-slate-50 border border-border rounded-lg p-4 max-h-96 overflow-y-auto">
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {filteredStartups.map((startup) => (
-                    <label key={startup.id} className="flex items-start gap-2 p-2 hover:bg-primary/5 rounded cursor-pointer transition">
+                    <label key={startup.id} className="flex items-start gap-2 p-2 hover:bg-primary/10 rounded cursor-pointer transition">
                       <input
                         type="checkbox"
                         checked={selected.includes(startup.id)}
@@ -69,18 +64,18 @@ export default function ComparePage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-lg p-6 h-fit sticky top-4">
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 h-fit sticky top-20">
               <p className="text-sm text-muted-foreground mb-1">Selected</p>
               <p className="text-4xl font-bold text-primary mb-4">{selected.length}/5</p>
               {selectedData.length > 0 && (
                 <div className="space-y-3 mb-4 pb-4 border-b border-border text-sm">
                   <div>
                     <p className="text-xs text-muted-foreground">Combined Revenue</p>
-                    <p className="font-bold text-lg">${(totalRevenue / 1000000).toFixed(1)}M</p>
+                    <p className="font-bold text-lg text-accent">${(totalRevenue / 1000000).toFixed(1)}M</p>
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground">Combined MRR</p>
-                    <p className="font-bold text-lg">${(totalMRR / 1000000).toFixed(2)}M</p>
+                    <p className="font-bold text-lg text-secondary">${(totalMRR / 1000000).toFixed(2)}M</p>
                   </div>
                 </div>
               )}
@@ -94,64 +89,29 @@ export default function ComparePage() {
           </div>
 
           {selectedData.length > 0 && (
-            <div className="space-y-4">
-              <div className="overflow-x-auto rounded-lg border">
-                <table className="w-full text-sm">
-                  <thead className="bg-secondary/50 border-b sticky top-0">
-                    <tr>
-                      <th className="p-4 text-left font-semibold">Startup</th>
-                      <th className="p-4 text-right font-semibold">Revenue</th>
-                      <th className="p-4 text-right font-semibold">MRR</th>
-                      <th className="p-4 text-left font-semibold">Industry</th>
-                      <th className="p-4 text-left font-semibold">Stage</th>
-                      <th className="p-4 text-left font-semibold">Founder</th>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-muted/50 border-b border-border">
+                  <tr>
+                    <th className="p-4 text-left font-semibold">Startup</th>
+                    <th className="p-4 text-right font-semibold">Revenue</th>
+                    <th className="p-4 text-right font-semibold">MRR</th>
+                    <th className="p-4 text-left font-semibold">Industry</th>
+                    <th className="p-4 text-left font-semibold">Stage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedData.map((startup) => (
+                    <tr key={startup.id} className="border-b border-border hover:bg-muted/30 transition">
+                      <td className="p-4 font-medium">{startup.name}</td>
+                      <td className="p-4 text-right text-accent font-semibold">${(startup.revenue / 1000000).toFixed(1)}M</td>
+                      <td className="p-4 text-right text-secondary font-semibold">${(startup.mrr / 1000).toFixed(0)}K</td>
+                      <td className="p-4">{startup.industry}</td>
+                      <td className="p-4"><span className="px-2 py-1 bg-secondary/10 text-secondary rounded-full text-xs">{startup.stage}</span></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {selectedData.map((startup) => (
-                      <tr key={startup.id} className="border-b hover:bg-secondary/20 transition">
-                        <td className="p-4 font-semibold flex items-center gap-2">
-                          {startup.isChampion && <span className="text-lg">🏆</span>}
-                          {startup.name}
-                        </td>
-                        <td className="p-4 text-right font-bold text-primary">${(startup.revenue / 1000000).toFixed(1)}M</td>
-                        <td className="p-4 text-right font-bold text-accent">${(startup.mrr / 1000000).toFixed(2)}M</td>
-                        <td className="p-4">{startup.industry}</td>
-                        <td className="p-4">
-                          <span className="inline-block px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">
-                            {startup.stage}
-                          </span>
-                        </td>
-                        <td className="p-4 text-muted-foreground">{startup.founder}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              
-              <div className="bg-gradient-to-r from-primary/5 to-accent/5 border border-primary/20 rounded-lg p-6">
-                <h3 className="font-bold mb-4">Comparison Summary</h3>
-                <div className="grid md:grid-cols-3 gap-4 text-sm">
-                  <div>
-                    <p className="text-muted-foreground">Total Revenue</p>
-                    <p className="text-2xl font-bold text-primary">${(totalRevenue / 1000000).toFixed(1)}M</p>
-                  </div>
-                  <div>
-                    <p className="text-muted-foreground">Average Revenue/Company</p>
-                    <p className="text-2xl font-bold text-accent">${(avgRevenue / 1000000).toFixed(1)}M</p>
-                  </div>
-                  <div>
-                    <p className="text-muted-foreground">Total MRR</p>
-                    <p className="text-2xl font-bold text-primary">${(totalMRR / 1000000).toFixed(2)}M</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {selected.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">👈 Select 1-5 startups to compare their metrics</p>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>

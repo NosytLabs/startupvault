@@ -23,19 +23,16 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   const router = useRouter();
 
   if (loading) {
-    const gridCols = className?.includes('grid') ? 2 : 1;
     return (
       <div className={className || 'space-y-3'}>
-        {[...Array(gridCols * 2)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div 
             key={i} 
-            className="p-4 rounded border border-border bg-card/50 animate-pulse"
-            style={{
-              animation: `fadeIn 0.4s ease-out ${i * 0.05}s backwards`
-            }}
+            className="p-6 rounded-lg border border-border bg-muted/30 animate-pulse"
+            style={{ animation: `fadeIn 0.4s ease-out ${i * 0.05}s backwards` }}
           >
-            <div className="h-4 bg-muted rounded w-1/3 mb-3"></div>
-            <div className="h-3 bg-muted rounded w-2/3"></div>
+            <div className="h-5 bg-muted rounded w-1/3 mb-3"></div>
+            <div className="h-4 bg-muted rounded w-2/3"></div>
           </div>
         ))}
       </div>
@@ -44,7 +41,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
 
   if (!startups || startups.length === 0) {
     return (
-      <div className="text-center py-12 animate-fade-in">
+      <div className="text-center py-12">
         <p className="text-xl font-semibold text-foreground">No startups found</p>
         <p className="text-sm text-muted-foreground mt-2">Try a different search</p>
       </div>
@@ -52,153 +49,44 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   }
 
   return (
-    <div style={{ 
-      display: 'grid', 
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-      gap: '1.5rem', 
-      width: '100%' 
-    }}>
+    <div className={className || 'space-y-4'}>
       {startups.map((startup, idx) => (
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
-          style={{ 
-            padding: '2rem', 
-            borderRadius: '1.25rem', 
-            border: '2px solid #d4e4f0',
-            backgroundColor: '#ffffff',
-            cursor: 'pointer',
-            transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
-            display: 'block',
-            boxShadow: '0 8px 24px rgba(26, 58, 82, 0.12)',
-            position: 'relative',
-            overflow: 'hidden',
-            animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards`
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.boxShadow = '0 20px 40px rgba(26, 58, 82, 0.25)';
-            e.currentTarget.style.borderColor = '#1a3a52';
-            e.currentTarget.style.backgroundColor = '#f5f9fc';
-            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.boxShadow = '0 8px 24px rgba(26, 58, 82, 0.12)';
-            e.currentTarget.style.borderColor = '#d4e4f0';
-            e.currentTarget.style.backgroundColor = '#ffffff';
-            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-          }}
+          className="p-6 border border-border rounded-lg bg-white hover:border-primary hover:shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:translate-y-[-4px]"
+          style={{ animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards` }}
         >
-          {/* Gradient accent */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '3px',
-            background: 'linear-gradient(90deg, #1a3a52, #ff6b35, #7cb342)',
-            opacity: 0,
-            transition: 'opacity 0.3s ease-out'
-          }}
-          onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.opacity = '1'}
-          onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.opacity = '0'}
-          />
+          {/* Gradient top border */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-secondary rounded-t-lg opacity-0 hover:opacity-100 transition-opacity" />
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-              <h3 style={{
-                fontWeight: 700,
-                color: '#1a3a52',
-                fontSize: '1.125rem',
-                lineHeight: 1.3,
-                letterSpacing: '-0.5px'
-              }}>{startup.name}</h3>
-              {startup.ranking && startup.ranking <= 5 && <span style={{fontSize: '1.25rem', animation: 'scaleIn 0.4s ease-out'}}>🏆</span>}
+          <div className="flex items-start justify-between mb-2">
+            <div>
+              <h3 className="text-lg font-bold text-foreground">{startup.name}</h3>
+              <p className="text-sm text-muted-foreground">@{startup.founder || 'Unknown'}</p>
             </div>
-            <p style={{
-              fontSize: '0.875rem',
-              color: '#5a7089',
-              marginBottom: '0.75rem',
-              fontWeight: 500
-            }}>by <span style={{fontWeight: 600, color: '#1a3a52'}}>{startup.founder}</span></p>
-            <p style={{
-              fontSize: '0.9375rem',
-              color: '#5a7089',
-              lineHeight: 1.6,
-              maxHeight: '3rem',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical'
-            }}>{startup.description}</p>
+            {startup.ranking && (
+              <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-semibold text-sm">#{startup.ranking}</span>
+            )}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(90px, 1fr))', gap: '0.5rem' }}>
-            {startup.revenue && startup.revenue > 0 && (
-              <div style={{
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #d4e4f0 0%, #c2d9e8 100%)',
-                border: '1px solid #a8c5d9',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.625rem',
-                  color: '#1a3a52',
-                  fontWeight: 600,
-                  letterSpacing: '0.5px',
-                  marginBottom: '0.25rem'
-                }}>REVENUE</div>
-                <div style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 700,
-                  color: '#1a3a52'
-                }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
-              </div>
+          <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{startup.description || 'No description'}</p>
+
+          <div className="flex gap-2 flex-wrap">
+            {startup.revenue !== undefined && (
+              <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-semibold">
+                Revenue: ${(startup.revenue / 1000000).toFixed(1)}M
+              </span>
             )}
-            {startup.mrr && startup.mrr > 0 && (
-              <div style={{
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #e8f5e9 0%, #dcedc8 100%)',
-                border: '1px solid #c5d9a8',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.625rem',
-                  color: '#558b2f',
-                  fontWeight: 600,
-                  letterSpacing: '0.5px',
-                  marginBottom: '0.25rem'
-                }}>MRR</div>
-                <div style={{
-                  fontSize: '0.875rem',
-                  fontWeight: 700,
-                  color: '#558b2f'
-                }}>${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
-              </div>
+            {startup.mrr !== undefined && startup.mrr > 0 && (
+              <span className="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-xs font-semibold">
+                MRR: ${(startup.mrr / 1000).toFixed(1)}K
+              </span>
             )}
             {startup.stage && (
-              <div style={{
-                padding: '0.75rem',
-                borderRadius: '0.5rem',
-                background: 'linear-gradient(135deg, #ffe4d4 0%, #ffd9c0 100%)',
-                border: '1px solid #ffb8a8',
-                textAlign: 'center'
-              }}>
-                <div style={{
-                  fontSize: '0.625rem',
-                  color: '#d84315',
-                  fontWeight: 600,
-                  letterSpacing: '0.5px',
-                  marginBottom: '0.25rem'
-                }}>STAGE</div>
-                <div style={{
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  color: '#d84315'
-                }}>{startup.stage}</div>
-              </div>
+              <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-xs font-semibold">
+                {startup.stage}
+              </span>
             )}
           </div>
         </div>
