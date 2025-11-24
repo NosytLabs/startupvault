@@ -8,7 +8,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const startup = completeTrustMRRStartups.find(s => s.id === parseInt(params.id));
+    const startup = completeTrustMRRStartups.find(s => s.id === params.id);
     
     if (!startup) {
       return NextResponse.json({ error: 'Startup not found' }, { status: 404 });

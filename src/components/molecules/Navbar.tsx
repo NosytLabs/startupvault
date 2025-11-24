@@ -60,7 +60,7 @@ export default function Navbar() {
           gap: '0.5rem',
           alignItems: 'center'
         }}>
-          {navItems.map((item, idx) => (
+          {navItems.map((item) => (
             <Link 
               key={item.href}
               href={item.href} 
@@ -78,8 +78,7 @@ export default function Navbar() {
                 border: 'none',
                 boxShadow: isActive(item.href) 
                   ? '0 4px 12px rgba(26, 58, 82, 0.3)'
-                  : 'none',
-                animation: `slideInRight 0.4s ease-out ${idx * 0.1}s backwards`
+                  : 'none'
               }}
               onMouseEnter={e => {
                 if (!isActive(item.href)) {
