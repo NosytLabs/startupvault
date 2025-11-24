@@ -36,7 +36,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <div className="inline-block mb-6 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20">
-              ✓ AUTHENTIC Data • 230 Verified Startups • $2.3T+ Revenue
+              ✓ AUTHENTIC Data • 149 Verified Startups • $1.1T+ Revenue
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text-primary">
@@ -44,11 +44,11 @@ export default function HomePage() {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-4 leading-relaxed">
-              Discover $2.3T+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to study and clone.
+              Discover $1.1T+ in verified startup revenues from TrustMRR.com. Real founders. Real revenue/MRR data. Real business models to study and clone.
             </p>
             
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Browse 230 verified startups including mega-scale companies, compare business models, and extract insights to launch your own ventures.
+              Browse 149 verified startups including mega-scale companies, compare business models, and extract insights to launch your own ventures.
             </p>
           </div>
 
@@ -74,15 +74,15 @@ export default function HomePage() {
           {/* Quick Stats */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="p-8 bg-primary/5 border border-primary/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-primary mb-2">230</div>
+              <div className="text-4xl font-bold text-primary mb-2">149</div>
               <div className="text-sm text-muted-foreground font-semibold">Verified Startups</div>
             </div>
             <div className="p-8 bg-accent/5 border border-accent/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-accent mb-2">$2.3T+</div>
+              <div className="text-4xl font-bold text-accent mb-2">$1.1T+</div>
               <div className="text-sm text-muted-foreground font-semibold">Combined Revenue</div>
             </div>
             <div className="p-8 bg-secondary/5 border border-secondary/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-secondary mb-2">40+</div>
+              <div className="text-4xl font-bold text-secondary mb-2">15+</div>
               <div className="text-sm text-muted-foreground font-semibold">Countries</div>
             </div>
           </div>
