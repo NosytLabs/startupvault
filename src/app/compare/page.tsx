@@ -64,17 +64,17 @@ export default function ComparePage() {
               </div>
             </div>
 
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 h-fit sticky top-20">
-              <p className="text-sm text-muted-foreground mb-1">Selected</p>
-              <p className="text-4xl font-bold text-primary mb-4">{selected.length}/5</p>
+            <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/30 rounded-xl p-6 h-fit sticky top-20 shadow-sm hover:shadow-md transition-all">
+              <p className="text-xs font-semibold text-primary/70 mb-1 uppercase tracking-wider">Selected</p>
+              <p className="text-5xl font-bold text-primary mb-4">{selected.length}/5</p>
               {selectedData.length > 0 && (
-                <div className="space-y-3 mb-4 pb-4 border-b border-border text-sm">
-                  <div>
-                    <p className="text-xs text-muted-foreground">Combined Revenue</p>
+                <div className="space-y-4 mb-6 pb-6 border-b border-primary/20 text-sm">
+                  <div className="p-3 bg-white/50 rounded-lg">
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Combined Revenue</p>
                     <p className="font-bold text-lg text-accent">${(totalRevenue / 1000000).toFixed(1)}M</p>
                   </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Combined MRR</p>
+                  <div className="p-3 bg-white/50 rounded-lg">
+                    <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Combined MRR</p>
                     <p className="font-bold text-lg text-secondary">${(totalMRR / 1000000).toFixed(2)}M</p>
                   </div>
                 </div>
@@ -89,25 +89,25 @@ export default function ComparePage() {
           </div>
 
           {selectedData.length > 0 && (
-            <div className="overflow-x-auto rounded-lg border border-border">
+            <div className="overflow-x-auto rounded-xl border border-border shadow-sm">
               <table className="w-full text-sm">
-                <thead className="bg-muted/50 border-b border-border">
+                <thead className="bg-gradient-to-r from-primary/5 to-accent/5 border-b border-border/50">
                   <tr>
-                    <th className="p-4 text-left font-semibold">Startup</th>
-                    <th className="p-4 text-right font-semibold">Revenue</th>
-                    <th className="p-4 text-right font-semibold">MRR</th>
-                    <th className="p-4 text-left font-semibold">Industry</th>
-                    <th className="p-4 text-left font-semibold">Stage</th>
+                    <th className="p-4 text-left font-bold text-foreground">Startup</th>
+                    <th className="p-4 text-right font-bold text-foreground">Revenue</th>
+                    <th className="p-4 text-right font-bold text-foreground">MRR</th>
+                    <th className="p-4 text-left font-bold text-foreground">Industry</th>
+                    <th className="p-4 text-left font-bold text-foreground">Stage</th>
                   </tr>
                 </thead>
                 <tbody>
                   {selectedData.map((startup) => (
-                    <tr key={startup.id} className="border-b border-border hover:bg-muted/30 transition">
-                      <td className="p-4 font-medium">{startup.name}</td>
+                    <tr key={startup.id} className="border-b border-border/50 hover:bg-primary/5 transition-colors duration-200">
+                      <td className="p-4 font-medium text-foreground">{startup.name}</td>
                       <td className="p-4 text-right text-accent font-semibold">${(startup.revenue / 1000000).toFixed(1)}M</td>
                       <td className="p-4 text-right text-secondary font-semibold">${(startup.mrr / 1000).toFixed(0)}K</td>
-                      <td className="p-4">{startup.industry}</td>
-                      <td className="p-4"><span className="px-2 py-1 bg-secondary/10 text-secondary rounded-full text-xs">{startup.stage}</span></td>
+                      <td className="p-4 text-foreground/80">{startup.industry}</td>
+                      <td className="p-4"><span className="px-3 py-1.5 bg-gradient-to-br from-secondary/20 to-secondary/10 text-secondary font-semibold rounded-full text-xs">{startup.stage}</span></td>
                     </tr>
                   ))}
                 </tbody>
