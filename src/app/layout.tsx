@@ -25,7 +25,8 @@ export const metadata: Metadata = {
   authors: [{ name: `${branding.name} Team` }],
   manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.ico',
+    apple: '/images/logo.png',
   },
   openGraph: {
     title: `${branding.subbrand} — ${branding.longName}`,
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     siteName: `${branding.subbrand} • ${branding.name}`,
     images: [
       {
-        url: '/icon.svg',
+        url: '/images/ogImage.png',
         width: 1200,
         height: 630,
       },

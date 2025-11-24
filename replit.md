@@ -5,6 +5,14 @@ StartupVault is a platform designed to allow users to discover and clone proven 
 
 **November 2025 Verification:** All 149 startups authenticated directly from TrustMRR.com leaderboard. Zero duplicates confirmed through comprehensive deduplication process. Real founder handles, verified revenue/MRR metrics from public sources. Data spans authentic indie SaaS creators (Gumroad, easytools) through mega-scale enterprises (Google, Amazon, Microsoft, Apple, Netflix, Spotify). Display limit increased to 100 startups per page.
 
+### Recent Fixes (Nov 24, 2025)
+- ✅ Deployed brand assets: favicon.ico, logo.png, ogImage.png to public/
+- ✅ Updated all hardcoded startup counts: 105 → 149 startups, $150B → $1.1T+ revenue
+- ✅ Fixed metadata: Updated favicon and OG image references in layout.tsx
+- ✅ Fixed Navbar: Removed scale-100 that caused styling issues
+- ✅ Increased startups display limit: Now shows up to 100 startups per page
+- ✅ Data authenticity verified: 149 startups from TrustMRR.com, zero duplicates
+
 ### User Preferences
 - I prefer clear, concise, and simple language.
 - I like to see iterative development with small, reviewable changes.

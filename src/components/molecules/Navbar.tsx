@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link 
           href="/" 
-          className="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity duration-200"
+          className="text-xl font-bold flex items-center gap-2 hover:opacity-80 transition-opacity duration-200 gradient-text-primary"
         >
           ⭐ StartupVault
         </Link>
@@ -30,7 +30,7 @@ export default function Navbar() {
               href={item.href}
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
                 isActive(item.href)
-                  ? 'bg-primary text-white shadow-md scale-100'
+                  ? 'bg-primary text-white shadow-md'
                   : 'text-foreground hover:bg-muted/50 hover:text-primary'
               }`}
             >
