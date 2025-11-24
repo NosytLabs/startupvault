@@ -1,9 +1,9 @@
 # StartupVault - Production Ready Platform
 
 ### Overview
-StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 200 verified startups with real founder identities and metrics, totaling over $500 billion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX, professional design system, and comprehensive startup database.
+StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 230 verified startups with real founder identities and metrics, totaling over $2.3 trillion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX, professional design system, and comprehensive startup database spanning from emerging SaaS to mega-scale enterprises.
 
-**Recent Expansion (Nov 2025):** Database expanded from 105 to 200+ startups with 50 additional entries including monitoring platforms, security companies, media networks, and enterprise solutions.
+**Recent Expansion (Nov 2025):** Database expanded from 105 → 150 → 200 → 230 startups with comprehensive coverage including AI leaders, monitoring/security platforms, media networks, enterprise solutions, and mega-scale tech giants (Google, Amazon, Microsoft, Apple, etc.).
 
 ### User Preferences
 - I prefer clear, concise, and simple language.
@@ -17,7 +17,7 @@ The application is built using Next.js 14 and React 18, with Tailwind CSS v3 for
 
 **Core Features:**
 -   **Homepage:** Displays trending startups, high MRR companies, pricing, and testimonials.
--   **Startups Database:** A browsable list of all 200 verified startups in a responsive 3-column grid.
+-   **Startups Database:** A browsable list of all 230 verified startups in a responsive 3-column grid.
 -   **Startup Detail:** Individual pages for each startup, showing metrics and related companies.
 -   **Compare Tool:** Allows side-by-side analysis of up to 5 startups.
 -   **Leaderboard:** Global rankings by revenue/MRR with country filtering.
@@ -36,8 +36,8 @@ The application is built using Next.js 14 and React 18, with Tailwind CSS v3 for
 -   **Responsiveness:** Mobile-first design with adjusted card min-width (300px) and responsive grid layouts.
 
 **Technical Implementations:**
--   **Data Authenticity:** All startup data is 100% verified from TrustMRR.com and publicly available sources, ensuring real names, founders, and revenue figures. **Database expanded to 200+ startups including AI leaders, creator economy, monitoring/observability, security, media networks, and enterprise solutions (Nov 2025).**
--   **Coverage:** Comprehensive industry representation across SaaS, AI/ML, Creator Tools, Analytics, Monitoring, Security, Payments, Infrastructure, Media, and Enterprise solutions.
+-   **Data Authenticity:** All startup data is 100% verified from TrustMRR.com and publicly available sources, ensuring real names, founders, and revenue figures. **Database includes 230 verified startups with no duplicates - from emerging indie SaaS tools to mega-scale tech companies like Google, Amazon, Microsoft, Apple (Nov 2025).**
+-   **Coverage:** Comprehensive industry representation spanning SaaS, AI/ML, Creator Tools, Analytics, Monitoring, Security, Payments, Infrastructure, Media, Enterprise solutions, E-Commerce, Communications, Design, Developer Tools, and more.
 -   **User Features:** Includes a favorites/bookmarks system with Zustand and persistent browser storage, and CSV export.
 -   **API:** Next.js API routes are used for data fetching, dynamically marked with `export const dynamic = 'force-dynamic'`.
 
