@@ -74,17 +74,17 @@ export default function HomePage() {
 
           {/* Quick Stats */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="p-8 bg-primary/5 border border-primary/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-primary mb-2">149</div>
-              <div className="text-sm text-muted-foreground font-semibold">Verified Startups</div>
+            <div className="group p-8 bg-gradient-to-br from-primary/15 to-primary/5 border border-primary/30 rounded-xl text-center hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+              <div className="text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform origin-center">149</div>
+              <div className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Verified Startups</div>
             </div>
-            <div className="p-8 bg-accent/5 border border-accent/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-accent mb-2">$1.1T+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Combined Revenue</div>
+            <div className="group p-8 bg-gradient-to-br from-accent/15 to-accent/5 border border-accent/30 rounded-xl text-center hover:shadow-xl hover:border-accent/50 transition-all duration-300 hover:-translate-y-1">
+              <div className="text-5xl font-bold text-accent mb-2 group-hover:scale-110 transition-transform origin-center">$1.1T+</div>
+              <div className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Combined Revenue</div>
             </div>
-            <div className="p-8 bg-secondary/5 border border-secondary/20 rounded-lg text-center hover:shadow-lg transition-all">
-              <div className="text-4xl font-bold text-secondary mb-2">15+</div>
-              <div className="text-sm text-muted-foreground font-semibold">Countries</div>
+            <div className="group p-8 bg-gradient-to-br from-secondary/15 to-secondary/5 border border-secondary/30 rounded-xl text-center hover:shadow-xl hover:border-secondary/50 transition-all duration-300 hover:-translate-y-1">
+              <div className="text-5xl font-bold text-secondary mb-2 group-hover:scale-110 transition-transform origin-center">15+</div>
+              <div className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Countries</div>
             </div>
           </div>
 

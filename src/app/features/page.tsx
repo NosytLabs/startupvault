@@ -58,10 +58,12 @@ export default function FeaturesPage() {
 
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {features.map((feature, i) => (
-              <div key={i} className="group p-8 bg-slate-50 border border-border rounded-lg hover:border-primary hover:shadow-lg transition-all">
-                <p className="text-5xl mb-4">{feature.icon}</p>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+              <div key={i} className="group p-8 bg-gradient-to-br from-slate-50 to-slate-25 border border-border rounded-xl hover:border-primary hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                <div className="mb-4 inline-block p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg group-hover:scale-110 transition-transform">
+                  <p className="text-4xl">{feature.icon}</p>
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">{feature.description}</p>
               </div>
             ))}
           </div>
