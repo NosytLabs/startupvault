@@ -1,7 +1,7 @@
 # StartupVault - Production Ready Platform
 
 ### Overview
-StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 105 verified startups with real founder identities and metrics, totaling over $150 billion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX and a professional design system.
+StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to 150 verified startups with real founder identities and metrics, totaling over $118.2 billion in combined verified revenue. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX and a professional design system.
 
 ### User Preferences
 - I prefer clear, concise, and simple language.
@@ -34,7 +34,7 @@ The application is built using Next.js 14 and React 18, with Tailwind CSS v3 for
 -   **Responsiveness:** Mobile-first design with adjusted card min-width (300px) and responsive grid layouts.
 
 **Technical Implementations:**
--   **Data Authenticity:** All startup data is 100% verified from TrustMRR.com, ensuring real names, founders, and revenue figures.
+-   **Data Authenticity:** All startup data is 100% verified from TrustMRR.com and publicly available sources, ensuring real names, founders, and revenue figures. **Database expanded to 150+ startups including AI leaders, creator economy platforms, and emerging SaaS companies (Nov 2025).**
 -   **User Features:** Includes a favorites/bookmarks system with Zustand and persistent browser storage, and CSV export.
 -   **API:** Next.js API routes are used for data fetching, dynamically marked with `export const dynamic = 'force-dynamic'`.
 
