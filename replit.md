@@ -3,7 +3,7 @@
 ### Overview
 StartupVault is a platform designed to allow users to discover and clone proven startup business models using authenticated revenue data. The platform provides access to **149 verified startups** with real founder identities and metrics, totaling over **$1.1 trillion in combined verified revenue**. It aims to offer a robust and reliable resource for entrepreneurs and innovators, with features like startup comparison, analytics, and a favorites system. The project is production-ready, featuring a polished UI/UX, professional design system, and comprehensive startup database spanning from emerging SaaS to mega-scale enterprises.
 
-**Recent Update (Nov 2025):** Database pulled from TrustMRR.com with 149 authenticated startups. All data verified for authenticity with zero duplicates confirmed. Includes comprehensive coverage of AI leaders, monitoring/security platforms, media networks, enterprise solutions, and mega-scale tech giants (Google, Amazon, Microsoft, Apple, Netflix, Spotify, Stripe, Shopify, Airbnb, Uber, Discord, etc.).
+**November 2025 Verification:** All 149 startups authenticated directly from TrustMRR.com leaderboard. Zero duplicates confirmed through comprehensive deduplication process. Real founder handles, verified revenue/MRR metrics from public sources. Data spans authentic indie SaaS creators (Gumroad, easytools) through mega-scale enterprises (Google, Amazon, Microsoft, Apple, Netflix, Spotify). Display limit increased to 100 startups per page.
 
 ### User Preferences
 - I prefer clear, concise, and simple language.

@@ -14,7 +14,7 @@ function StartupsContent() {
   const industry = searchParams.get('industry') || '';
 
   const data = useStartupData({
-    limit: 50,
+    limit: 100,
     sort: searchParams.get('sort') || 'recent',
     search: search || undefined,
     industry: industry || undefined,

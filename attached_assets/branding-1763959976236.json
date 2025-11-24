@@ -1,0 +1,95 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Inconsolata",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#FEFFE6",
+    "accent": "#E5ECFE",
+    "background": "#F5F5F5",
+    "textPrimary": "#0A0A0A",
+    "link": "#FFE6E6"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inconsolata",
+      "heading": "Inconsolata"
+    },
+    "fontStacks": {
+      "heading": [
+        "Inconsolata"
+      ],
+      "body": [
+        "Inconsolata"
+      ],
+      "paragraph": [
+        "Inconsolata"
+      ]
+    },
+    "fontSizes": {
+      "h1": "48px",
+      "h2": "18px",
+      "body": "12px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 8,
+    "borderRadius": "10px"
+  },
+  "components": {
+    "input": {
+      "borderColor": "#CCCCCC",
+      "borderRadius": "10px"
+    },
+    "buttonPrimary": {
+      "background": "#E5ECFE",
+      "textColor": "#0A0A0A",
+      "borderColor": "#DFDFDF",
+      "borderRadius": "10px",
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "#FFFFFF",
+      "textColor": "#171717",
+      "borderColor": "#E5E5E5",
+      "borderRadius": "8px",
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.png",
+    "favicon": "File saved at: attached_assets/favicon.ico",
+    "ogImage": "File saved at: attached_assets/ogImage.png"
+  },
+  "__framework_hints": [],
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 1,
+      "text": "Chargeback.ioPrevent chargebacks on autopilot",
+      "reasoning": "Button #1 has a vibrant blue background (#E5ECFE) and action-oriented text 'Chargeback.ioPrevent chargebacks on autopilot', making it the primary call-to-action. It stands out among the other buttons due to its color and purpose."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Show more (50 more startups)",
+      "reasoning": "Button #0 has a white background (#FFFFFF) and is less prominent compared to the primary button. It serves as a less critical action, making it suitable as the secondary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals and startups"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": null
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  }
+}
