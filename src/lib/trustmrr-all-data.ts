@@ -1,5 +1,5 @@
-// Complete TrustMRR Database - 50 Verified Startups from trustmrr.com Leaderboard
-// Only authentic startups with verified revenue/MRR metrics
+// Complete TrustMRR Database - 48 Verified Startups from trustmrr.com Leaderboard
+// All startups have verified revenue/MRR metrics and real founder identities
 export const allTrustMRRStartups = [
   { id: "1", name: "Gumroad", description: "Go from 0 to $1 - Creator platform for digital products", revenue: 878595861, mrr: 0, founder: "shl", industry: "Digital Products", stage: "Scale", website: "https://gumroad.com", country: "US", ranking: 1, isChampion: true, categories: ["Creator Tools", "Digital Products"] },
   { id: "2", name: "easytools sp. z o.o.", description: "Tools that help creators sell and better advertise their products and courses", revenue: 0, mrr: 82107087, founder: "easytools", industry: "SaaS", stage: "Growth", website: "https://www.easytools.pro", country: "Poland", ranking: 2, isChampion: true, categories: ["Marketing", "SaaS"] },
@@ -49,8 +49,6 @@ export const allTrustMRRStartups = [
   { id: "46", name: "OverThink", description: "Software and training services with recurring billing", revenue: 866738, mrr: 48, founder: "rohangilkes", industry: "SaaS", stage: "Growth", website: "https://overthink.com", country: "US", ranking: 46, isChampion: false, categories: ["SaaS", "Training"] },
   { id: "47", name: "Calendesk", description: "B2B SaaS for therapists and service businesses to manage bookings and payments", revenue: 805188, mrr: 20673, founder: "maciejcupial", industry: "SaaS", stage: "Growth", website: "https://calendesk.com", country: "US", ranking: 47, isChampion: false, categories: ["SaaS", "Booking"] },
   { id: "48", name: "BackPedal Ltd", description: "GPS tracking and 24/7 recovery service for bikes and ebikes", revenue: 763319, mrr: 28991, founder: "dunn27_james", industry: "IoT", stage: "Growth", website: "https://backpedal.com", country: "US", ranking: 48, isChampion: false, categories: ["IoT", "Safety"] },
-  { id: "49", name: "Budibase", description: "Open source low-code platform for building business apps", revenue: 750000, mrr: 25000, founder: "founder49", industry: "SaaS", stage: "Growth", website: "https://budibase.com", country: "US", ranking: 49, isChampion: false, categories: ["SaaS", "Low-Code"] },
-  { id: "50", name: "Framer", description: "Design and code interactive sites without coding", revenue: 700000, mrr: 20000, founder: "founder50", industry: "Tools", stage: "Growth", website: "https://framer.com", country: "US", ranking: 50, isChampion: false, categories: ["Tools", "Design"] },
 ];
 
 export const TOTAL_STARTUPS = allTrustMRRStartups.length;
