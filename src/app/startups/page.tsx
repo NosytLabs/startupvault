@@ -1,12 +1,12 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Footer } from '@/components/layout/footer';
 import { StartupList } from '@/components/organisms/StartupList';
 import { CloneModal } from '@/components/organisms/CloneModal';
 import { useStartupData } from '@/shared/hooks/useStartupData';
 
-export default function StartupsPage() {
+function StartupsContent() {
   const searchParams = useSearchParams();
   const [cloneStartup, setCloneStartup] = useState<any>(null);
 
@@ -49,5 +49,13 @@ export default function StartupsPage() {
       <Footer />
       {cloneStartup && <CloneModal startup={cloneStartup} onClose={() => setCloneStartup(null)} />}
     </>
+  );
+}
+
+export default function StartupsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading startups...</div>}>
+      <StartupsContent />
+    </Suspense>
   );
 }

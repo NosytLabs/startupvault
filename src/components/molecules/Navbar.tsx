@@ -18,7 +18,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav style={{
+    <nav suppressHydrationWarning style={{
       position: 'sticky',
       top: 0,
       zIndex: 50,
@@ -75,7 +75,9 @@ export default function Navbar() {
             { href: '/', label: 'Startups' },
             { href: '/compare', label: 'Compare' },
             { href: '/analytics', label: 'Analytics' }
-          ].map((item, idx) => (
+          ].map((item, idx) => {
+            const isActive = pathname === item.href;
+            return (
             <Link 
               key={item.href}
               href={item.href} 
@@ -86,24 +88,24 @@ export default function Navbar() {
                 fontSize: '0.875rem',
                 fontWeight: 600,
                 transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                color: mounted && pathname === item.href ? '#ffffff' : '#4a5f74',
-                background: mounted && pathname === item.href 
+                color: isActive ? '#ffffff' : '#4a5f74',
+                background: isActive 
                   ? 'linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%)'
                   : 'transparent',
                 border: 'none',
-                boxShadow: mounted && pathname === item.href 
+                boxShadow: isActive 
                   ? '0 4px 12px rgba(26, 58, 82, 0.3)'
                   : 'none',
-                animation: mounted ? `slideInRight 0.4s ease-out ${idx * 0.1}s backwards` : 'none'
+                animation: `slideInRight 0.4s ease-out ${idx * 0.1}s backwards`
               }}
               onMouseEnter={e => {
-                if (mounted && pathname !== item.href) {
+                if (!isActive) {
                   e.currentTarget.style.backgroundColor = 'rgba(26, 58, 82, 0.08)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
                 }
               }}
               onMouseLeave={e => {
-                if (mounted && pathname !== item.href) {
+                if (!isActive) {
                   e.currentTarget.style.backgroundColor = 'transparent';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }
@@ -111,7 +113,8 @@ export default function Navbar() {
             >
               {item.label}
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </nav>
