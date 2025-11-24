@@ -6,8 +6,8 @@ export default function FeaturesPage() {
   const features = [
     {
       icon: '📊',
-      title: '50 Verified Startups',
-      description: 'Browse real companies with authenticated revenue and MRR data from TrustMRR.com. All 50 startups generating $1.1B+ combined revenue.'
+      title: '48 Verified Startups',
+      description: 'Browse real companies with authenticated revenue and MRR data from TrustMRR.com. All 48 startups generating $1.05B+ combined revenue.'
     },
     {
       icon: '🔍',
@@ -68,7 +68,7 @@ export default function FeaturesPage() {
           <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-lg p-12 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Find Your Next Startup Idea?</h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Start with the free Explorer plan to browse all 50 verified startups. Upgrade to Builder for advanced features like website scanning and document generation.
+              Start with the free Explorer plan to browse all 48 verified startups. Upgrade to Builder for advanced features like website scanning and document generation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/startups" className="btn btn-primary">

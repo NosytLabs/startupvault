@@ -47,7 +47,7 @@ export default function HomePage() {
                 border: '1px solid rgba(26, 58, 82, 0.15)',
                 letterSpacing: '0.5px'
               }}>
-                ✓ AUTHENTIC Data • 50 Verified Startups • $1.1B+ Revenue
+                ✓ AUTHENTIC Data • 48 Verified Startups • $1.05B+ Revenue
               </span>
             </div>
             <h1 style={{
@@ -81,7 +81,7 @@ export default function HomePage() {
               maxWidth: '42rem',
               margin: '0 auto 2.5rem',
             }}>
-              Browse 50 verified startups, scan their websites for insights, and generate actionable build documentation for your own ventures.
+              Browse 48 verified startups, scan their websites for insights, and generate actionable build documentation for your own ventures.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '42rem', margin: '0 auto 2rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
