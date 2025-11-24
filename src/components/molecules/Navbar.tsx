@@ -6,9 +6,15 @@ import { useState, useEffect } from 'react';
 export default function Navbar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -17,9 +23,17 @@ export default function Navbar() {
       top: 0,
       zIndex: 50,
       width: '100%',
-      background: 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
-      borderBottom: '1px solid #e5e7eb',
-      boxShadow: '0 2px 16px rgba(59, 130, 246, 0.08)'
+      background: scrolled 
+        ? 'rgba(255, 255, 255, 0.9)' 
+        : 'linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%)',
+      backdropFilter: scrolled ? 'blur(10px)' : 'none',
+      borderBottom: scrolled 
+        ? '1px solid rgba(229, 231, 235, 0.5)' 
+        : '1px solid #e5e7eb',
+      boxShadow: scrolled 
+        ? '0 4px 20px rgba(59, 130, 246, 0.12)' 
+        : '0 2px 16px rgba(59, 130, 246, 0.08)',
+      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
     }}>
       <div style={{
         maxWidth: '80rem',
@@ -42,8 +56,13 @@ export default function Navbar() {
           alignItems: 'center',
           gap: '0.5rem',
           whiteSpace: 'nowrap',
-          letterSpacing: '-0.5px'
-        }}>
+          letterSpacing: '-0.5px',
+          transition: 'transform 0.2s ease-out',
+          cursor: 'pointer'
+        }}
+        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+        >
           ⭐ StartupVault
         </Link>
         
@@ -56,7 +75,7 @@ export default function Navbar() {
             { href: '/', label: 'Startups' },
             { href: '/compare', label: 'Compare' },
             { href: '/analytics', label: 'Analytics' }
-          ].map(item => (
+          ].map((item, idx) => (
             <Link 
               key={item.href}
               href={item.href} 
@@ -74,7 +93,20 @@ export default function Navbar() {
                 border: 'none',
                 boxShadow: mounted && pathname === item.href 
                   ? '0 4px 12px rgba(59, 130, 246, 0.3)'
-                  : 'none'
+                  : 'none',
+                animation: mounted ? `slideInRight 0.4s ease-out ${idx * 0.1}s backwards` : 'none'
+              }}
+              onMouseEnter={e => {
+                if (mounted && pathname !== item.href) {
+                  e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }
+              }}
+              onMouseLeave={e => {
+                if (mounted && pathname !== item.href) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }
               }}
             >
               {item.label}

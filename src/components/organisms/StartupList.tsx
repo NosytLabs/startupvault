@@ -27,7 +27,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
     return (
       <div className={className || 'space-y-3'}>
         {[...Array(gridCols * 2)].map((_, i) => (
-          <div key={i} className="p-4 rounded border border-border bg-card/50 animate-pulse">
+          <div 
+            key={i} 
+            className="p-4 rounded border border-border bg-card/50 animate-pulse"
+            style={{
+              animation: `fadeIn 0.4s ease-out ${i * 0.05}s backwards`
+            }}
+          >
             <div className="h-4 bg-muted rounded w-1/3 mb-3"></div>
             <div className="h-3 bg-muted rounded w-2/3"></div>
           </div>
@@ -38,7 +44,7 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
 
   if (!startups || startups.length === 0) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-12 animate-fade-in">
         <p className="text-xl font-semibold text-foreground">No startups found</p>
         <p className="text-sm text-muted-foreground mt-2">Try a different search</p>
       </div>
@@ -46,8 +52,13 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
   }
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '2rem', width: '100%' }}>
-      {startups.map((startup) => (
+    <div style={{ 
+      display: 'grid', 
+      gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', 
+      gap: '2rem', 
+      width: '100%' 
+    }}>
+      {startups.map((startup, idx) => (
         <div
           key={startup.id}
           onClick={() => router.push(`/startups/${startup.id}`)}
@@ -59,7 +70,10 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             cursor: 'pointer',
             transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
             display: 'block',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.06)'
+            boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
+            position: 'relative',
+            overflow: 'hidden',
+            animation: `slideUp 0.5s ease-out ${idx * 0.08}s backwards`
           }}
           onMouseOver={(e) => {
             e.currentTarget.style.boxShadow = '0 24px 48px rgba(59, 130, 246, 0.25)';
@@ -74,6 +88,21 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
           }}
         >
+          {/* Gradient accent */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '3px',
+            background: 'linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899)',
+            opacity: 0,
+            transition: 'opacity 0.3s ease-out'
+          }}
+          onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.opacity = '1'}
+          onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.opacity = '0'}
+          />
+
           <div style={{ marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
               <h3 style={{
@@ -83,47 +112,92 @@ export function StartupList({ startups, loading, className }: StartupListProps) 
                 lineHeight: 1.3,
                 letterSpacing: '-0.5px'
               }}>{startup.name}</h3>
-              {startup.ranking && startup.ranking <= 5 && <span style={{fontSize: '1.25rem'}}>🏆</span>}
+              {startup.ranking && startup.ranking <= 5 && <span style={{fontSize: '1.25rem', animation: 'scaleIn 0.4s ease-out'}}>🏆</span>}
             </div>
             <p style={{
               fontSize: '0.875rem',
               color: '#6b7280',
               marginBottom: '0.75rem',
               fontWeight: 500
-            }}>by <span style={{fontWeight: 600}}>{startup.founder}</span></p>
+            }}>by <span style={{fontWeight: 600, color: '#3b82f6'}}>{startup.founder}</span></p>
             <p style={{
               fontSize: '0.9375rem',
               color: '#4b5563',
               lineHeight: 1.6,
               maxHeight: '3rem',
               overflow: 'hidden',
-              textOverflow: 'ellipsis'
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical'
             }}>{startup.description}</p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))', gap: '0.5rem' }}>
             {startup.revenue && (
-              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)', border: '1px solid #bfdbfe', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)'; }}>
-                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Revenue</p>
-                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#3b82f6', marginTop: '0.25rem' }}>${(startup.revenue / 1000000).toFixed(1)}M</p>
+              <div style={{
+                padding: '0.75rem',
+                borderRadius: '0.5rem',
+                background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+                border: '1px solid #93c5fd',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.625rem',
+                  color: '#1e40af',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  marginBottom: '0.25rem'
+                }}>REVENUE</div>
+                <div style={{
+                  fontSize: '0.9375rem',
+                  fontWeight: 700,
+                  color: '#1e40af'
+                }}>${(startup.revenue / 1000000).toFixed(1)}M</div>
               </div>
             )}
             {startup.mrr && (
-              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%)', border: '1px solid #fbbf24', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%)'; }}>
-                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>MRR</p>
-                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#f59e0b', marginTop: '0.25rem' }}>${(startup.mrr / 1000).toFixed(0)}K</p>
-              </div>
-            )}
-            {startup.industry && (
-              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)', border: '1px solid #a5b4fc', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)'; }}>
-                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Industry</p>
-                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#4f46e5', marginTop: '0.25rem' }}>{startup.industry}</p>
+              <div style={{
+                padding: '0.75rem',
+                borderRadius: '0.5rem',
+                background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
+                border: '1px solid #d8b4fe',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.625rem',
+                  color: '#6d28d9',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  marginBottom: '0.25rem'
+                }}>MRR</div>
+                <div style={{
+                  fontSize: '0.9375rem',
+                  fontWeight: 700,
+                  color: '#6d28d9'
+                }}>${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
               </div>
             )}
             {startup.stage && (
-              <div style={{ padding: '0.75rem', borderRadius: '0.5rem', background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)', border: '1px solid #d8b4fe', transition: 'all 0.2s' }} onMouseOver={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)'; }}>
-                <p style={{ fontSize: '0.625rem', fontWeight: 600, color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>Stage</p>
-                <p style={{ fontSize: '0.875rem', fontWeight: 700, color: '#9333ea', marginTop: '0.25rem' }}>{startup.stage}</p>
+              <div style={{
+                padding: '0.75rem',
+                borderRadius: '0.5rem',
+                background: 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
+                border: '1px solid #f472b6',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  fontSize: '0.625rem',
+                  color: '#be185d',
+                  fontWeight: 600,
+                  letterSpacing: '0.5px',
+                  marginBottom: '0.25rem'
+                }}>STAGE</div>
+                <div style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  color: '#be185d'
+                }}>{startup.stage}</div>
               </div>
             )}
           </div>
