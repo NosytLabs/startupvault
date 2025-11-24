@@ -4,33 +4,28 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
 export default function ChampionsPage() {
   const router = useRouter();
   const [champions, setChampions] = useState<any[]>([]);
-  const [stats, setStats] = useState<any>({});
+  const [stats, setStats] = useState<any>({ totalMRR: 0, totalRevenue: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([
-      fetch('/api/champions').then(r => r.json()),
-      fetch('/api/leaderboard').then(r => r.json()),
-    ]).then(([champ, board]) => {
-      const champs = champ.champions || [];
-      setChampions(champs);
-      setStats({
-        totalMRR: champs.reduce((sum: number, s: any) => sum + s.mrr, 0),
-        totalRevenue: champs.reduce((sum: number, s: any) => sum + s.revenue, 0),
-        avgCloneability: 75,
-      });
-      setLoading(false);
+    const champs = allTrustMRRStartups.filter(s => s.isChampion === true).slice(0, 20);
+    setChampions(champs);
+    setStats({
+      totalMRR: champs.reduce((sum, s) => sum + (s.mrr || 0), 0),
+      totalRevenue: champs.reduce((sum, s) => sum + (s.revenue || 0), 0),
     });
+    setLoading(false);
   }, []);
 
   const chartData = champions.map(s => ({
     name: s.name.substring(0, 12),
-    MRR: s.mrr ? s.mrr / 1000000 : 0,
-    Revenue: s.revenue ? s.revenue / 1000000 : 0,
+    MRR: (s.mrr || 0) / 1000000,
+    Revenue: (s.revenue || 0) / 1000000,
   }));
 
   const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b'];
@@ -38,7 +33,7 @@ export default function ChampionsPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container max-w-6xl mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80">
+        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 font-semibold">
           <span>←</span> Back to Home
         </Link>
 
@@ -86,7 +81,7 @@ export default function ChampionsPage() {
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
-                    data={champions.map((s, i) => ({ name: s.name.substring(0, 10), value: s.revenue || s.mrr }))}
+                    data={champions.map((s, i) => ({ name: s.name.substring(0, 10), value: Math.max(s.revenue || 0, s.mrr || 0) }))}
                     cx="50%"
                     cy="50%"
                     innerRadius={60}
@@ -136,7 +131,7 @@ export default function ChampionsPage() {
                     </div>
                     <div>
                       <div className="text-xs text-muted-foreground">MRR</div>
-                      <div className="font-bold">${(startup.mrr / 1000000).toFixed(2)}M</div>
+                      <div className="font-bold">${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
                     </div>
                   </div>
                 </div>

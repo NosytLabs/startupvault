@@ -2,26 +2,33 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
 export default function LeaderboardPage() {
   const router = useRouter();
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
-  const [champions, setChampions] = useState<any[]>([]);
   const [countries, setCountries] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState('');
 
   useEffect(() => {
-    Promise.all([
-      fetch('/api/leaderboard').then(r => r.json()),
-      fetch('/api/champions').then(r => r.json()),
-      fetch('/api/countries').then(r => r.json()),
-    ]).then(([lb, champ, ctry]) => {
-      setLeaderboard(lb.leaderboard || []);
-      setChampions(champ.champions || []);
-      setCountries(ctry.countries || []);
-      setLoading(false);
+    const startups = allTrustMRRStartups;
+    
+    const sorted = [...startups].sort((a, b) => (a.ranking || 999) - (b.ranking || 999));
+    setLeaderboard(sorted);
+
+    const countryMap = new Map<string, number>();
+    startups.forEach(s => {
+      const country = s.country || 'Unknown';
+      countryMap.set(country, (countryMap.get(country) || 0) + 1);
     });
+
+    const countryList = Array.from(countryMap.entries())
+      .map(([country, count]) => ({ country, count }))
+      .sort((a, b) => b.count - a.count);
+
+    setCountries(countryList);
+    setLoading(false);
   }, []);
 
   const filtered = selectedCountry
@@ -35,50 +42,22 @@ export default function LeaderboardPage() {
           <div className="mb-16 animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold mb-3 text-foreground">TrustMRR Global Leaderboard</h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              <span className="font-semibold text-primary">{leaderboard.length}</span> verified startups ranked by performance • <span className="font-semibold text-primary">{champions.length}</span> Champions
+              <span className="font-semibold text-primary">{leaderboard.length}</span> verified startups ranked by performance
             </p>
           </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-primary mb-2">{leaderboard.length}</div>
+          <div className="p-8 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-blue-600 mb-2">{leaderboard.length}</div>
             <div className="text-sm text-muted-foreground">Total Verified Startups</div>
           </div>
-          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-primary mb-2">🏆 {champions.length}</div>
-            <div className="text-sm text-muted-foreground">Champion Status Startups</div>
-          </div>
-          <div className="p-8 rounded-lg bg-card border border-border hover:shadow-lg transition-all">
-            <div className="text-4xl font-bold text-primary mb-2">🌍 {countries.length}</div>
+          <div className="p-8 rounded-lg bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-purple-600 mb-2">🌍 {countries.length}</div>
             <div className="text-sm text-muted-foreground">Countries Represented</div>
           </div>
-        </div>
-
-        {/* Champions Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">🏆 Champions (Top Performers)</h2>
-          <div className="space-y-3">
-            {champions.slice(0, 10).map((startup, idx) => (
-              <div 
-                key={startup.id} 
-                className="bg-card rounded-lg border border-border p-5 hover:shadow-lg hover:border-primary/50 transition-all cursor-pointer"
-                onClick={() => router.push(`/startups/${startup.id}`)}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="text-2xl font-bold text-primary w-10 text-center">{idx + 1}</div>
-                    <div>
-                      <div className="font-bold text-foreground">{startup.name}</div>
-                      <div className="text-sm text-muted-foreground">{startup.founder} • {startup.country}</div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold text-primary text-lg">${(startup.mrr || startup.revenue).toLocaleString()}</div>
-                    <div className="text-xs text-muted-foreground font-medium">{startup.mrr ? 'MRR' : 'Revenue'}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="p-8 rounded-lg bg-gradient-to-br from-pink-500/10 to-pink-600/10 border border-pink-500/20 hover:shadow-lg transition-all">
+            <div className="text-4xl font-bold text-pink-600 mb-2">${(leaderboard.reduce((sum, s) => sum + s.revenue, 0) / 1000000000).toFixed(1)}B</div>
+            <div className="text-sm text-muted-foreground">Combined Revenue</div>
           </div>
         </div>
 
@@ -132,16 +111,19 @@ export default function LeaderboardPage() {
                       >
                         <td className="px-4 py-3 font-semibold text-primary">{startup.ranking}</td>
                         <td className="px-4 py-3">
-                          <div className="font-semibold">{startup.name}</div>
+                          <div className="font-semibold flex items-center gap-2">
+                            {startup.isChampion && <span>🏆</span>}
+                            {startup.name}
+                          </div>
                           <div className="text-xs text-muted-foreground">{startup.industry}</div>
                         </td>
                         <td className="px-4 py-3 text-sm">{startup.founder}</td>
                         <td className="px-4 py-3 text-sm">{startup.country}</td>
                         <td className="px-4 py-3 text-right font-semibold">
-                          ${(startup.mrr || startup.revenue).toLocaleString()}
+                          ${(Math.max(startup.mrr || 0, startup.revenue || 0) / 1000000).toFixed(1)}M
                         </td>
                         <td className="px-4 py-3">
-                          <span className="px-2 py-1 rounded-full text-xs bg-primary/20 text-primary">
+                          <span className="px-2 py-1 rounded-full text-xs bg-primary/20 text-primary font-medium">
                             {startup.stage}
                           </span>
                         </td>
