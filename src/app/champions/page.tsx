@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
@@ -8,19 +8,12 @@ import { allTrustMRRStartups } from '@/lib/trustmrr-all-data';
 
 export default function ChampionsPage() {
   const router = useRouter();
-  const [champions, setChampions] = useState<any[]>([]);
-  const [stats, setStats] = useState<any>({ totalMRR: 0, totalRevenue: 0 });
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const champs = allTrustMRRStartups.filter(s => s.isChampion === true).slice(0, 20);
-    setChampions(champs);
-    setStats({
-      totalMRR: champs.reduce((sum, s) => sum + (s.mrr || 0), 0),
-      totalRevenue: champs.reduce((sum, s) => sum + (s.revenue || 0), 0),
-    });
-    setLoading(false);
-  }, []);
+  const champions = allTrustMRRStartups.filter(s => s.isChampion === true).slice(0, 20);
+  
+  const stats = {
+    totalMRR: champions.reduce((sum, s) => sum + (s.mrr || 0), 0),
+    totalRevenue: champions.reduce((sum, s) => sum + (s.revenue || 0), 0),
+  };
 
   const chartData = champions.map(s => ({
     name: s.name.substring(0, 12),
@@ -33,7 +26,7 @@ export default function ChampionsPage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-background to-secondary/20">
       <div className="container max-w-6xl mx-auto px-4 py-12">
-        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 font-semibold">
+        <Link href="/" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 font-semibold" style={{ textDecoration: 'none' }}>
           <span>←</span> Back to Home
         </Link>
 
@@ -43,7 +36,7 @@ export default function ChampionsPage() {
         </div>
 
         {/* Stats */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-6 mb-12" suppressHydrationWarning>
           <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg border border-blue-500/20 p-8">
             <div className="text-sm text-muted-foreground mb-2">Champions</div>
             <div className="text-4xl font-bold text-blue-600">{champions.length}</div>
@@ -59,7 +52,7 @@ export default function ChampionsPage() {
         </div>
 
         {/* Charts */}
-        {!loading && champions.length > 0 && (
+        {champions.length > 0 && (
           <div className="grid lg:grid-cols-2 gap-8 mb-12">
             <div className="bg-card rounded-lg border p-6">
               <h2 className="text-xl font-bold mb-4">MRR vs Revenue</h2>
@@ -104,39 +97,35 @@ export default function ChampionsPage() {
         <div>
           <h2 className="text-2xl font-bold mb-6">All Champions</h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {loading ? (
-              <div className="text-center py-12 text-muted-foreground">Loading champions...</div>
-            ) : (
-              champions.map((startup, idx) => (
-                <div
-                  key={startup.id}
-                  className="bg-card rounded-lg border p-6 hover:border-primary/50 transition cursor-pointer hover:shadow-lg"
-                  onClick={() => router.push(`/startups/${startup.id}`)}
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-2xl font-bold text-primary">#{startup.ranking}</span>
-                        <span className="text-3xl">🏆</span>
-                      </div>
-                      <h3 className="text-lg font-bold">{startup.name}</h3>
-                      <p className="text-sm text-muted-foreground">{startup.founder}</p>
+            {champions.map((startup, idx) => (
+              <div
+                key={startup.id}
+                className="bg-card rounded-lg border p-6 hover:border-primary/50 transition cursor-pointer hover:shadow-lg"
+                onClick={() => router.push(`/startups/${startup.id}`)}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-2xl font-bold text-primary">#{startup.ranking}</span>
+                      <span className="text-3xl">🏆</span>
                     </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">{startup.description}</p>
-                  <div className="grid grid-cols-2 gap-4 pt-4 border-t">
-                    <div>
-                      <div className="text-xs text-muted-foreground">Revenue</div>
-                      <div className="font-bold">${(startup.revenue / 1000000).toFixed(1)}M</div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-muted-foreground">MRR</div>
-                      <div className="font-bold">${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
-                    </div>
+                    <h3 className="text-lg font-bold">{startup.name}</h3>
+                    <p className="text-sm text-muted-foreground">{startup.founder}</p>
                   </div>
                 </div>
-              ))
-            )}
+                <p className="text-sm text-muted-foreground mb-4">{startup.description}</p>
+                <div className="grid grid-cols-2 gap-4 pt-4 border-t">
+                  <div>
+                    <div className="text-xs text-muted-foreground">Revenue</div>
+                    <div className="font-bold">${(startup.revenue / 1000000).toFixed(1)}M</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">MRR</div>
+                    <div className="font-bold">${((startup.mrr || 0) / 1000000).toFixed(2)}M</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

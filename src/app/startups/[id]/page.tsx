@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Footer } from '@/components/layout/footer';
@@ -11,26 +11,11 @@ export default function StartupDetailPage() {
   const params = useParams();
   const router = useRouter();
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
-  const [startup, setStartup] = useState<any>(null);
-  const [relatedStartups, setRelatedStartups] = useState<any[]>([]);
   const [saved, setSaved] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [downloading, setDownloading] = useState<string | null>(null);
 
-  useEffect(() => {
-    setMounted(true);
-    const id = params.id as string;
-    const found = allTrustMRRStartups.find(s => s.id === id);
-    if (found) {
-      setStartup(found);
-      setSaved(isFavorite(id));
-      
-      const related = allTrustMRRStartups
-        .filter(s => s.industry === found.industry && s.id !== id)
-        .slice(0, 3);
-      setRelatedStartups(related);
-    }
-  }, [params.id, isFavorite]);
+  const id = params.id as string;
+  const startup = allTrustMRRStartups.find(s => s.id === id);
 
   if (!startup) {
     return (
@@ -46,13 +31,18 @@ export default function StartupDetailPage() {
     );
   }
 
+  const relatedStartups = allTrustMRRStartups
+    .filter(s => s.industry === startup.industry && s.id !== id)
+    .slice(0, 3);
+
   const toggleSave = () => {
-    if (saved) {
-      removeFavorite(startup.id);
+    if (isFavorite(id)) {
+      removeFavorite(id);
+      setSaved(false);
     } else {
-      addFavorite(startup.id);
+      addFavorite(id);
+      setSaved(true);
     }
-    setSaved(!saved);
   };
 
   const downloadDoc = async (docType: 'prd' | 'mvp' | 'tasks') => {
@@ -81,9 +71,21 @@ export default function StartupDetailPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="container max-w-5xl mx-auto px-4 py-12">
-          <Link href="/startups" className="inline-flex items-center gap-2 mb-8 text-primary hover:text-primary/80 font-semibold">
+      <main style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(to bottom right, #eff6ff, #fff, #f5f3ff)'
+      }}>
+        <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '3rem 1rem' }}>
+          <Link href="/startups" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            marginBottom: '2rem',
+            color: '#3b82f6',
+            textDecoration: 'none',
+            fontWeight: 600,
+            cursor: 'pointer'
+          }}>
             <span>←</span> Back to Startups
           </Link>
 
@@ -116,23 +118,21 @@ export default function StartupDetailPage() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 {startup.isChampion && <div style={{ fontSize: '3rem' }}>🏆</div>}
-                {mounted && (
-                  <button
-                    onClick={toggleSave}
-                    style={{
-                      fontSize: '2.5rem',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'transform 0.2s',
-                      filter: saved ? 'brightness(1.1)' : 'brightness(0.9)'
-                    }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.2)'}
-                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-                  >
-                    {saved ? '❤️' : '🤍'}
-                  </button>
-                )}
+                <button
+                  onClick={toggleSave}
+                  style={{
+                    fontSize: '2.5rem',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.2s',
+                    filter: saved ? 'brightness(1.1)' : 'brightness(0.9)'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.2)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  {saved ? '❤️' : '🤍'}
+                </button>
               </div>
             </div>
             <p style={{ fontSize: '1.125rem', color: '#4b5563', lineHeight: 1.6 }}>{startup.description}</p>
